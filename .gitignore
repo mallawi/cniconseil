@@ -19,6 +19,12 @@ $RECYCLE.BIN/
 *.lnk
 
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
 ### Node ###
 # Logs
 logs
