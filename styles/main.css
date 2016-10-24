@@ -137,14 +137,20 @@ header#main--header {
     margin: 5px 0;
     padding: 0;
     text-align: center;
-    border: 2px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
+
+#main--header .nav--list li:hover {
+    background-color: cornflowerblue;
+}
+
 
 #main--header .nav--list a {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 10px;
+    padding: 10px 2px;
     color: inherit;
     text-decoration: none;
     outline: none;
@@ -155,7 +161,7 @@ header#main--header {
 @media (min-width: 770px) {
     header#main--header {
         height: 100px;
-        padding: 0 200px;
+        padding: 0 50px;
         position: static;
     }
 
@@ -167,7 +173,6 @@ header#main--header {
         width: auto;
         height: 100%;
         margin: auto;
-        margin-left: 50px;
     }
 
     #main--header .header--nav {
@@ -188,9 +193,21 @@ header#main--header {
     }
 
     #main--header .nav--list li {
-        width: 100px;
+        width: 80px;
         margin: 0 5px;
-        border-radius: 2px;
+        border-top: none;
+    }
+}
+
+@media (min-width: 990px) {
+    header#main--header {
+        padding: 0 100px;
+    }
+}
+
+@media (min-width: 1200px) {
+    header#main--header {
+        padding: 0 200px;
     }
 }
 
