@@ -46,9 +46,9 @@ main#main--container {
 
 header#main--header {
     width: 100%;
-    height: 100px;
+    height: auto;
     margin: 0;
-    padding: 0 200px;
+    padding: 0;
     background-color: cadetblue;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -58,25 +58,58 @@ header#main--header {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    position: relative;
+}
+
+#main--header .header--ham {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    margin-right: 50px;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+#main--header .ham--btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+
+#main--header .ham--btn img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #main--header .logo--wrapper {
     width: auto;
-    height: 100%;
-    margin: auto;
-    margin-left: 50px;
+    height: 80px;
+    margin: 0;
+    margin-left: 20px;
     padding: 0;
     -ms-flex-item-align: start;
     align-self: flex-start;
 }
 
 #main--header .header--nav {
-    width: auto;
-    height: 80%;
-    margin: auto;
+    width: 100%;
+    height: auto;
+    margin: 0;
     padding: 0;
-    -ms-flex-item-align: end;
-    align-self: flex-end;    
+    background-color: inherit;
+    position: absolute;
+    top: 100%;
+    right: 0;
 }
 
 .header--nav ul {
@@ -88,24 +121,23 @@ header#main--header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
-    flex-flow: row nowrap;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 #main--header .nav--list li {
-    width: auto;
+    width: 100%;
     height: auto;
-    margin: 0 20px;
+    margin: 5px 0;
     padding: 0;
     text-align: center;
     border: 2px solid black;
-    border-radius: 2px;
 }
 
 #main--header .nav--list a {
@@ -117,6 +149,49 @@ header#main--header {
     text-decoration: none;
     outline: none;
     display: inline-block; 
+}
+
+
+@media (min-width: 770px) {
+    header#main--header {
+        height: 100px;
+        padding: 0 200px;
+        position: static;
+    }
+
+    #main--header .header--ham {
+        display: none;
+    }
+
+    #main--header .logo--wrapper {
+        width: auto;
+        height: 100%;
+        margin: auto;
+        margin-left: 50px;
+    }
+
+    #main--header .header--nav {
+        width: auto;
+        height: 100%;
+        margin: auto;
+        -ms-flex-item-align: end;
+        align-self: flex-end;
+        position: static;  
+    }
+
+    .header--nav ul {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+    }
+
+    #main--header .nav--list li {
+        width: 100px;
+        margin: 0 5px;
+        border-radius: 2px;
+    }
 }
 
 
