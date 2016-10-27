@@ -119,6 +119,8 @@ header#main--header {
     position: absolute;
     top: 100%;
     right: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
 }
 
 .header--nav ul {
@@ -187,7 +189,9 @@ header#main--header {
         margin: auto;
         -ms-flex-item-align: end;
         align-self: flex-end;
-        position: static;  
+        position: static;
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
     }
 
     .header--nav ul {
@@ -364,8 +368,8 @@ div#content--container {
 
 #content--container .presentation--section {
     width: 100%;
-    /*height: 400px;*/
     padding: 20px 0;
+    margin-top: 50px;
     /*background-color: dodgerblue;*/
     
 }
@@ -376,10 +380,67 @@ div#content--container {
     margin: auto;
 }
 
-.pres--heading h1, 
-.pres--heading h2 {
-    width: 100%;
+.pres--heading h1 {
+    width: auto;
     text-align: center;
+}
+
+.pres--heading .sub--heading--wrap {
+    width: 300px;
+    height: auto;
+    margin: auto;
+    display: block;
+    position: relative;
+}
+
+.pres--heading .sub--heading--wrap::before {
+    content: "";
+    width: 150px;
+    height: 50px;
+    background-color: #1f2122;
+    position: absolute;
+    top: 0;
+    right: 10%;
+}
+
+.pres--heading h2 {
+    width: 300px;
+    height: 50px;
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.pres--heading h2:not(:last-child) {
+    background-image: -webkit-linear-gradient(left, #1f2122, #1f2122);
+    background-image: linear-gradient(90deg, #1f2122, #1f2122);
+    background-size: 150px 100%;
+    background-position: 20% 0;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.pres--heading h2:last-child {
+    padding-left: 30%;
+    background-image: -webkit-linear-gradient(left, #1f2122, #1f2122);
+    background-image: -webkit-linear-gradient(left, #1f2122, #1f2122 );
+    background-image: linear-gradient(90deg, #1f2122, #1f2122 );
+    background-size: 150px 100%;
+    background-position: 80% 0;
+    background-repeat: no-repeat;
+
+}
+ 
+.pres--heading h2:not(:last-child)::after {
+    content: "&";
+    width: auto;
+    height: auto;
+    font-size: 48px;
+    font-style: italic;
+    color: #eb8c00;
+    position: absolute;
+    top: 100%;
+    right: 210px;
 }
 
 .presentation--section p {
@@ -404,7 +465,7 @@ div#content--container {
 */
 
 
-#content--container .info--section {
+#content--container .apropos--section {
     width: 100%;
     height: 400px;
     background-color: dodgerblue;      
