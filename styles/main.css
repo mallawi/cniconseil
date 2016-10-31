@@ -430,6 +430,9 @@ div#content--container {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -ms-flex-line-pack: center;
         align-content: center;
 }
@@ -543,6 +546,78 @@ div#content--container {
     padding: 0 200px;
     /*background-color: cadetblue;        */
     
+}
+
+#content--container .annonce--slider-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.annonce--slider-wrap .slider--items {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row-reverse nowrap;
+        flex-flow: row-reverse nowrap;
+    overflow: hidden;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+}
+
+.slider--items .slider--item {
+    width: 80%;
+    min-width: 80%;
+    height: 90%;
+    margin: auto;
+}
+
+.slider--items .slider--item:last-child {
+    flex-align: flex-start;
+}
+
+.annonce--slider-wrap .slider--btn {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 50px);
+}
+
+.annonce--slider-wrap .slider--btn:not(:last-child) {
+    left: calc(10% - 100px);
+}
+
+.annonce--slider-wrap .slider--btn:last-child {
+    right: calc(10% - 100px);
+}
+
+.slider--btn svg {
+    width: 100%;
+    height: 100%;
+    fill: black;
+}
+
+.slider--btn:hover svg {
+    fill: gray;
 }
 
 
