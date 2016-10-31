@@ -57,7 +57,7 @@ header#main--header {
     width: 100%;
     height: auto;
     margin: 0;
-    padding: 0;
+    padding: 5px 0;
     background-color: #3a3e41;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -110,6 +110,12 @@ header#main--header {
     align-self: flex-start;
 }
 
+
+.logo--wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
 #main--header .header--nav {
     width: 100%;
     height: auto;
@@ -121,6 +127,16 @@ header#main--header {
     right: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0);
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    transition: -webkit-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+
+#main--header .nav--shown {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
 }
 
 .header--nav ul {
@@ -167,7 +183,7 @@ header#main--header {
 @media (min-width: 770px) {
     header#main--header {
         height: auto;
-        padding: 0 50px;
+        padding: 20px 50px 0;
         -ms-flex-flow: column nowrap;
             flex-flow: column nowrap;
         position: static;
@@ -187,6 +203,7 @@ header#main--header {
         width: auto;
         height: 50px;
         margin: auto;
+        margin-top: 20px;
         -ms-flex-item-align: end;
         align-self: flex-end;
         position: static;
@@ -227,13 +244,13 @@ header#main--header {
 
 @media (min-width: 990px) {
     header#main--header {
-        padding: 0 100px;
+        padding: 20px 100px 0;
     }
 }
 
 @media (min-width: 1200px) {
     header#main--header {
-        padding: 0 200px;
+        padding: 20px 200px 0;
     }
 }
 
