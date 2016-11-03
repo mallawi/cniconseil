@@ -42,7 +42,7 @@ gulp.task('connect', () => {
 
 // Task for watching files for changes 
 gulp.task("watcher", function() {
-    gulp.watch(["./public/**", "./resources/**"]).on("change", browserSync.reload);
+    gulp.watch(["./public/**", "./resources/**", "./app/**"]).on("change", browserSync.reload);
 });
 
 
@@ -52,7 +52,7 @@ gulp.task('serve', ["connect", "watcher"]);
 
 // Moving files from build to repo
 gulp.task("move", function() {
-    gulp.src("./**")
+    gulp.src(["./**", "!node_modules"])
     .pipe(gulp.dest(path.join(__dirname, "../GitHub/cniconseil")));
 });
 

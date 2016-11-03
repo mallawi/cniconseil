@@ -11,10 +11,14 @@
 |
 */
 
-Route::get("/", function () {
-    return view("accueil");
-});
+Route::get("/", "PagesController@index");
 
-Route::get("/annonces", function () {
-    return view("annonces");
-});
+Route::get("annonces", "PagesController@annonces");
+
+Route::get("services", "PagesController@services");
+
+
+Route::get("form/{type?}", "RequestsController@form");
+
+
+

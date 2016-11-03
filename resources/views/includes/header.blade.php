@@ -6,10 +6,10 @@
     <nav id="main--nav" class="header--nav">
         <ul class="nav--list">
             <li><a href="/">Accueil</a></li>
-            <li><a href="{{ url("/annonces") }}"">Annonces</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="{{ url('/annonces') }}">Annonces</a></li>
+            <li><a href="{{ url('/services') }}">Services</a></li>
             <li><a href="#">A propos</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/#contact">Contact</a></li>
         </ul>
     </nav>
 
