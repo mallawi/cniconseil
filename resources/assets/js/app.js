@@ -22,35 +22,13 @@
 (function() {
     "use strict";
 
-    function init() {
-        console.log("document ready!");
-    }
 
-
-    function navHandler() {
-        var hamBtn = document.getElementById("ham--button");
-        var nav = document.getElementById("main--nav");
-
-        hamBtn.addEventListener("click", function(ev) {
-            ev.preventDefault();
-
-           if (!nav.classList.contains("nav--shown")) {
-                nav.classList.add("nav--shown");
-           } else {
-               nav.classList.remove("nav--shown");
-           }
-        });
-    } 
-
-    function formsHandler() {
-        var formsItem = document.getElementsByClassName("forms--item");
-        var acForm = document.getElementById("form--item-acheter");
-
-        function ajaxReq(url) {
+    function XHRequest() {
+        function ajaxReq(method, url) {
             var promise = new Promise( function (resolve, reject) {
                 var xhr = new XMLHttpRequest();
 
-                xhr.open("GET", url);
+                xhr.open(method, url);
                 xhr.responseType = "document";
                 xhr.send();
 
@@ -70,33 +48,78 @@
             return promise;
         }
 
-        var ajaxCb = {
-            success: function(data) {
-                console.log(data);
+        return {
+            get: function(url) {
+                return ajaxReq("GET", url);
             },
-            failed: function(status) {
-
+            post: function(url) {
+                return ajaxReq("POST", url);
             }
         }
-        
-        function getForms(ev) {
+
+    }
+
+
+    function formsHandler() {
+        var formsItem = document.getElementsByClassName("forms--item");
+
+        function makeChanges(data) {
+            var requestedData = data;
+            var contentHolder = document.getElementById("forms--wrapper");
+            var form = requestedData.getElementById("form--wrap");
+            console.log(form);
+            contentHolder.appendChild(form);
+        }
+
+        var responseHandler = {
+            success: function(data) {
+                makeChanges(data);
+            },
+            failed: function(status) {
+                console.log(status);
+            }
+        }
+
+         function getForms(ev) {
             ev.preventDefault();
             ev.stopPropagation();
 
-            console.log(ev);
-            console.log(acForm.getAttribute("data-type"));
-            var typeAttr = acForm.getAttribute("data-type");
+            console.log(this);
 
+            var typeAttr = this.getAttribute("data-type");
             var url = "/form/" + typeAttr;
 
-            ajaxReq(url).then(ajaxCb.success).catch(ajaxCb.failed);
+            // var xhrequest = new XHRequest();
+
+            // xhrequest.get(url).then(responseHandler.success).catch(responseHandler.failed);
         }
 
         for (var i = 0; i < formsItem.length; i++) {
             formsItem[i].addEventListener("click", getForms);
-            // console.log(formsItem[i]);
         }
     }
+
+
+
+    function init() {
+        console.log("document ready!");
+    }
+
+
+    function navHandler() {
+        var hamBtn = document.getElementById("ham--button");
+        var nav = document.getElementById("main--nav");
+
+        hamBtn.addEventListener("click", function(ev) {
+            ev.preventDefault();
+
+           if (!nav.classList.contains("nav--shown")) {
+                nav.classList.add("nav--shown");
+           } else {
+               nav.classList.remove("nav--shown");
+           }
+        });
+    } 
     
 
 
@@ -107,8 +130,5 @@
             formsHandler();
         }
     }
-
-
-
 
 }());
