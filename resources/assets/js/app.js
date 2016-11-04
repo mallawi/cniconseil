@@ -22,7 +22,7 @@
 (function() {
     "use strict";
 
-
+    // constructor function for XMLHttpRequest that return a promise
     function XHRequest() {
         function ajaxReq(method, url) {
             var promise = new Promise( function (resolve, reject) {
@@ -62,13 +62,40 @@
 
     function formsHandler() {
         var formsItem = document.getElementsByClassName("forms--item");
+        var currentFormRef;
+        var oldFormRef;
+
 
         function makeChanges(data) {
             var requestedData = data;
-            var contentHolder = document.getElementById("forms--wrapper");
+            var formHolder = document.getElementById("forms--wrapper");
             var form = requestedData.getElementById("form--wrap");
-            console.log(form);
-            contentHolder.appendChild(form);
+            var oldForm;
+
+            if (formHolder.classList.contains("form--shown")) {
+                // checking if form is the same then remove
+                if (currentFormRef.classList.contains("form--current")) {
+                    oldForm = document.getElementById("form--wrap");
+                    formHolder.removeChild(oldForm);
+                    formHolder.classList.remove("form--shown");
+                    currentFormRef.classList.remove("form--current");
+                    console.log("removed");
+                } else { // if not the same form replace it
+                    oldForm = document.getElementById("form--wrap");
+                    formHolder.replaceChild(form, oldForm);
+                    oldFormRef.classList.remove("form--current");
+                    currentFormRef.classList.add("form--current");
+                    console.log("replaced");
+                }
+            } else { // if no form shown add
+                formHolder.classList.add("form--shown");
+                currentFormRef.classList.add("form--current");
+
+                formHolder.appendChild(form);
+                oldFormRef = currentFormRef;
+                
+                console.log("added"); 
+            }
         }
 
         var responseHandler = {
@@ -84,14 +111,15 @@
             ev.preventDefault();
             ev.stopPropagation();
 
-            console.log(this);
+            currentFormRef = this;
 
             var typeAttr = this.getAttribute("data-type");
+
             var url = "/form/" + typeAttr;
 
-            // var xhrequest = new XHRequest();
+            var xhrequest = new XHRequest();
 
-            // xhrequest.get(url).then(responseHandler.success).catch(responseHandler.failed);
+            xhrequest.get(url).then(responseHandler.success).catch(responseHandler.failed);
         }
 
         for (var i = 0; i < formsItem.length; i++) {

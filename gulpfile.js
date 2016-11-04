@@ -52,7 +52,7 @@ gulp.task('serve', ["connect", "watcher"]);
 
 // Moving files from build to repo
 gulp.task("move", function() {
-    gulp.src(["./**", "!node_modules"])
+    gulp.src(["./**", "!./node_modules"])
     .pipe(gulp.dest(path.join(__dirname, "../GitHub/cniconseil")));
 });
 
