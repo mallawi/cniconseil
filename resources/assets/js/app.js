@@ -127,48 +127,91 @@
         }
     }
 
-
+    // function handler for handling slider from the index page
     function sliderHandler() {
         var sliderBtns = document.getElementsByClassName("slider--btn");
         var sliderItems = document.getElementsByClassName("slider--item");
-        var itemIndex;
+        var prevBtn;
+        var nextBtn;
+        var itemIdx;
         var currentItem;
 
+        // making changes to the slider
+        function changeSliderItem(current, item) {
+            current.classList.remove("slider--item-current");
+            item.classList.add("slider--item-current");
+            
+        }
+        
+        // object for handling btns and slider items logicaly
         var sControl = {
-            previous: function() {
-                
-            },
-            next: function() {
+            previous: function(btn) {
+                if (nextBtn && nextBtn.disabled === true) {
+                    nextBtn.disabled = false;
+                }
 
+                for (var idx = 0; idx < sliderItems.length; idx++) {
+                    if (sliderItems[idx].classList.contains("slider--item-current")) {
+                        if (idx + 1 === sliderItems.length ) {
+                            btn.disabled = true;
+                            return;
+                        }
+
+                        var item = idx + 1;
+                        changeSliderItem(sliderItems[idx], sliderItems[item]);
+                        break;
+                    }
+                }
+            },
+            next: function(btn) {
+                if (prevBtn && prevBtn.disabled === true) {
+                    prevBtn.disabled = false;
+                }
+
+                for (var idx = 0; idx < sliderItems.length; idx++) {
+                    if (sliderItems[idx].classList.contains("slider--item-current")) {
+                        if (idx - 1 < 0 ) {
+                            btn.disabled = true;
+                            return;
+                        } 
+
+                        var item = idx - 1;
+                        changeSliderItem(sliderItems[idx], sliderItems[item]);
+                        break;
+                    }
+                }
             }
         }
 
-
+        // event listener handler, determining the btn and calling the right action
         function sBtnHandler(ev) {
             ev.preventDefault();
             ev.stopPropagation();
 
             switch(this.name) {
                 case "previous--btn":
-                    sControl.previous();
+                    sControl.previous(this);
+                    prevBtn = this;
                     break;
                 case "next--btn":
-                    sCrontol.next();
+                    sControl.next(this);
+                    nextBtn = this;
                     break;
             }
 
         }
 
+
+        // for loops to add event listeners to btns and iterating over slider items
+        
         for (var i = 0; i < sliderBtns.length; i++) {
             sliderBtns[i].addEventListener("click", sBtnHandler);
-            // console.log(slide)
         }
 
-        for (var ix = 0; ix < sliderItems.length; ix++) {
-            console.log(sliderItems[ix]);
-            // if (ix++ === sliderItems.length) {
-            //     console.log(sliderItems[ix]);
-            // }
+        for (var idx = 0; idx < sliderItems.length; idx++) {
+            if (idx === sliderItems.length - 1) {
+                sliderItems[idx].classList.add("slider--item-current");
+            }
         }
     }
 
