@@ -423,11 +423,6 @@ div#content--container {
 
 }
 
-#content--container .form--shown {
-    -webkit-transition: height 0.2s ease-in-out;
-    transition: height 0.2s ease-in-out;
-}
-
 .forms--section #forms--item--wrap {
     width: 100%;
     height: auto;
@@ -447,15 +442,37 @@ div#content--container {
 }
 
 
-.forms--section #form--wrap {
-    width: 700px;
-    height: 800px;
+.forms--section #form--container {
+    width: 100%;
+    height: 0;
     margin: auto;
     padding: 0;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+    -webkit-transform: scale3d(1, 0, 1);
+            transform: scale3d(1, 0, 1);
+}
+
+
+#form--container.form--shown {
+    height: 800px;
+    -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+}
+
+#form--container #form--wrap {
+    width: 80%;
+    height: 100%;
+    margin: auto;
     background-color: darkslateblue;
 }
 
-.forms--section .forms--item {
+
+#forms--item--wrap .forms--item {
     width: 250px;
     height: 80px;
     margin: 20px auto;
@@ -463,14 +480,24 @@ div#content--container {
     background-color: lightskyblue;
     border-radius: 4px;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    -webkit-transition: height 0.2s ease-in-out,
+        padding 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
+    transition: height 0.2s ease-in-out,
+        padding 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
 }
 
-.forms--item:hover .forms--item-feedback {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+
+#forms--item--wrap .forms--item-current {
+    background-color: cornflowerblue;
+}
+
+#forms--item--wrap .forms--item:hover {
+    border: 2px solid lightskyblue;
+    background-color: transparent;
+    height: 100px;
+    padding: 20px 0;
 }
 
 .forms--item h3 {
@@ -485,50 +512,11 @@ div#content--container {
     opacity: 0.7;
 }
 
-.forms--item-feedback {
-    width: 30px;
-    height: 80px;
-    margin: 0;
-    padding: 0;
-    padding-top: calc(40px - 15px); 
-    background-color: darkslateblue;
-    opacity: 0;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    -webkit-transform: translate3d(30px, 0, 0);
-            transform: translate3d(30px, 0, 0);
-    -webkit-transition: opacity 0.2s ease-in-out,
-        -webkit-transform 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out,
-        -webkit-transform 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out,
-        transform 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out,
-        transform 0.2s ease-in-out,
-        -webkit-transform 0.2s ease-in-out;
-}
-
-
-.forms--item-feedback svg {
-    width: 30px;
-    height: 30px;
-    margin: 0;
-}
-
 
 @media (min-width: 770px) {
     .forms--section .forms--item {
         margin: 20px 20px;
     }
-
-     .forms--item-feedback {
-        display: inline-block;
-    }
-
 }
 
 
@@ -539,13 +527,14 @@ div#content--container {
     }
 
     .forms--section #forms--item--wrap {
+        height: 150px;
         -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
     }
 
-     .forms--section .forms--item {
-           margin: auto 10px;
-        }
+    #forms--item--wrap .forms--item {
+        margin: auto 10px;
+    }
  
 }
 

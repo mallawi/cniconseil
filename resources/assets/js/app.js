@@ -68,28 +68,28 @@
 
         function makeChanges(data) {
             var requestedData = data;
-            var formHolder = document.getElementById("forms--wrapper");
+            var formHolder = document.getElementById("form--container");
             var form = requestedData.getElementById("form--wrap");
             var oldForm;
 
             if (formHolder.classList.contains("form--shown")) {
                 // checking if form is the same then remove
-                if (currentFormRef.classList.contains("form--current")) {
+                if (currentFormRef.classList.contains("forms--item-current")) {
                     oldForm = document.getElementById("form--wrap");
                     formHolder.removeChild(oldForm);
                     formHolder.classList.remove("form--shown");
-                    currentFormRef.classList.remove("form--current");
+                    currentFormRef.classList.remove("forms--item-current");
                     console.log("removed");
                 } else { // if not the same form replace it
                     oldForm = document.getElementById("form--wrap");
                     formHolder.replaceChild(form, oldForm);
-                    oldFormRef.classList.remove("form--current");
-                    currentFormRef.classList.add("form--current");
+                    oldFormRef.classList.remove("forms--item-current");
+                    currentFormRef.classList.add("forms--item-current");
                     console.log("replaced");
                 }
             } else { // if no form shown add
                 formHolder.classList.add("form--shown");
-                currentFormRef.classList.add("form--current");
+                currentFormRef.classList.add("forms--item-current");
 
                 formHolder.appendChild(form);
                 oldFormRef = currentFormRef;
@@ -128,6 +128,51 @@
     }
 
 
+    function sliderHandler() {
+        var sliderBtns = document.getElementsByClassName("slider--btn");
+        var sliderItems = document.getElementsByClassName("slider--item");
+        var itemIndex;
+        var currentItem;
+
+        var sControl = {
+            previous: function() {
+                
+            },
+            next: function() {
+
+            }
+        }
+
+
+        function sBtnHandler(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+
+            switch(this.name) {
+                case "previous--btn":
+                    sControl.previous();
+                    break;
+                case "next--btn":
+                    sCrontol.next();
+                    break;
+            }
+
+        }
+
+        for (var i = 0; i < sliderBtns.length; i++) {
+            sliderBtns[i].addEventListener("click", sBtnHandler);
+            // console.log(slide)
+        }
+
+        for (var ix = 0; ix < sliderItems.length; ix++) {
+            console.log(sliderItems[ix]);
+            // if (ix++ === sliderItems.length) {
+            //     console.log(sliderItems[ix]);
+            // }
+        }
+    }
+
+
 
     function init() {
         console.log("document ready!");
@@ -156,6 +201,7 @@
             init();
             navHandler();
             formsHandler();
+            sliderHandler();
         }
     }
 

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class RequestsController extends Controller
 {
-    public function form()
+    public function form($type)
     {
-        return view("form");
+        return view("forms." . $type);
     }
 }

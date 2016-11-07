@@ -10,8 +10,7 @@ class PagesController extends Controller
     {
         return view("accueil");
     }
-
-
+    
     public function annonces() 
     {
         return view("annonces");
