@@ -166,6 +166,36 @@ header#main--header {
     border-bottom: 1px solid black;
 }
 
+
+#main--header .nav--list li.sub--menu {
+    position: relative;
+}
+
+.nav--list li.sub--menu:hover span {
+    display: block;
+}
+
+
+.nav--list li span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #3a3e41;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+
+.nav--list li span:hover {
+    background-color: #eb8c00;
+}
+
 #main--header .nav--list a {
     width: 100%;
     height: 100%;
@@ -472,6 +502,22 @@ div#content--container {
 }
 
 
+#form--wrap h1 {
+    height: 10%;
+    margin: 10px auto;
+    padding: auto;
+    text-align: center;
+}
+
+
+#form--wrap form {
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    padding: 20px 50px;
+}
+
+
 #forms--item--wrap .forms--item {
     width: 250px;
     height: 80px;
@@ -497,7 +543,7 @@ div#content--container {
     border: 2px solid lightskyblue;
     background-color: transparent;
     height: 100px;
-    padding: 20px 0;
+    padding: 20px 10px;
 }
 
 .forms--item h3 {
@@ -553,7 +599,7 @@ div#content--container {
 
 #content--container .annonces--section {
     width: 100%;
-    height: 400px;
+    height: 480px;
     padding: 0 30px;
     /*background-color: cadetblue;        */
     
@@ -561,7 +607,7 @@ div#content--container {
 
 #content--container .annonce--slider-wrap {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 80px);
     position: relative;
 }
 
@@ -644,6 +690,37 @@ div#content--container {
 
 .slider--btn:hover svg {
     fill: gray;
+}
+
+
+.annonces--section .annonces--link {
+    width: 150px;
+    height: 50px;
+    margin: auto;
+    padding: 0;
+    background-color: #3a3e41;
+    border-radius: 2px;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+.annonces--section .annonces--link:hover {
+    background-color: transparent;
+    border: 2px solid #3a3e41;
+}
+
+.annonces--section .annonces--link a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: calc(50% - 60px);
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+    display: inline-block; 
 }
 
 
@@ -739,6 +816,12 @@ div#content--container {
     height: 400px;
     padding: 0 200px;
     background-color: dodgerblue;
+}
+
+
+.apropos--section h2 {
+    margin: 0 auto;
+    text-align: center;
 }
 
 

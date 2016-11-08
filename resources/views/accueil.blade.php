@@ -12,22 +12,22 @@
 
         <section id="forms--wrapper" class="forms--section">
             <div id="forms--item--wrap">
-                <div class="acheter--form forms--item"  data-type="acheter">
+                <div class="acheter--form-item forms--item"  data-type="acheter">
                     <h3>Acheter</h3>
                     <p>Voulez-vous acheter?</p>
                 </div>
 
-                <div class="vendre--form forms--item" data-type="vendre">
+                <div class="vendre--form-item forms--item" data-type="vendre">
                     <h3>Vendre</h3>
                     <p>Voulez-vous vendre?</p>
                 </div>
 
-                <div class="investir--form forms--item" data-type="investir">
+                <div class="investir--form-item forms--item" data-type="investir">
                     <h3>Investiment</h3>
                     <p>Voulez-vous investir?</p>
                 </div>
 
-                <div class="louer--form forms--item" data-type="louer">
+                <div class="louer--form-item forms--item" data-type="louer">
                     <h3>Logement</h3>
                     <p>Voulez-vous louer?</p>
                 </div>
@@ -53,11 +53,16 @@
                         <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
                     </svg>
                 </button>
+
                 <button name="next--btn" class="slider--btn" type="button">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
                     </svg>
                 </button>                      
+            </div>
+
+            <div class="annonces--link">
+                <a href="{{ url('/annonces') }}">Voir les annonces</a>
             </div>
         </section>
 

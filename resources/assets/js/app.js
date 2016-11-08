@@ -48,7 +48,7 @@
         function makeChanges(data) {
             var requestedData = data;
             var formHolder = document.getElementById("form--container");
-            var form = requestedData.getElementById("form--wrap");
+            var requestedForm = requestedData.getElementById("form--wrap");
             var oldForm;
 
             if (formHolder.classList.contains("form--shown")) {
@@ -61,16 +61,17 @@
                     console.log("removed");
                 } else { // if not the same form replace it
                     oldForm = document.getElementById("form--wrap");
-                    formHolder.replaceChild(form, oldForm);
-                    oldFormRef.classList.remove("forms--item-current");
+                    formHolder.replaceChild(requestedForm, oldForm);
                     currentFormRef.classList.add("forms--item-current");
+                    oldFormRef.classList.remove("forms--item-current");
+                    oldFormRef = currentFormRef;
                     console.log("replaced");
                 }
             } else { // if no form shown add
                 formHolder.classList.add("form--shown");
                 currentFormRef.classList.add("forms--item-current");
 
-                formHolder.appendChild(form);
+                formHolder.appendChild(requestedForm);
                 oldFormRef = currentFormRef;
                 
                 console.log("added"); 
