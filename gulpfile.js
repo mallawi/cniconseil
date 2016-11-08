@@ -3,8 +3,7 @@ const elixir = require('laravel-elixir'),
     connect = require('gulp-connect-php'),
     browserSync = require('browser-sync'),
     path = require("path");
-
-require('laravel-elixir-vue-2');
+    
 // require("laravel-elixir-browsersync-official");
 
 
