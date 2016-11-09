@@ -911,7 +911,7 @@ div#content--container {
     width: 100%;
     height: auto;
     padding: 50px 50px;
-    background-color: slateblue;
+    background-color: #d0d6d6;
 
 }
 
@@ -951,7 +951,7 @@ div#content--container {
 
 
 #form--container.form--shown {
-    height: 800px;
+    height: auto;
     -webkit-transform: scale3d(1, 1, 1);
         transform: scale3d(1, 1, 1);
 }
@@ -960,32 +960,24 @@ div#content--container {
     width: 80%;
     height: 100%;
     margin: auto;
-    background-color: darkslateblue;
+    padding: 50px 0;
+    /*background-color: darkslateblue;*/
 }
 
 
 #form--wrap h1 {
     height: 10%;
-    margin: 10px auto;
-    padding: auto;
-    text-align: center;
-}
-
-
-#form--wrap form {
-    width: 100%;
-    height: 80%;
     margin: auto;
-    padding: 20px 50px;
+    text-align: center;
+    color: #8e9191;
 }
-
 
 #forms--item--wrap .forms--item {
     width: 250px;
     height: 80px;
     margin: 20px auto;
     padding: 10px;
-    background-color: lightskyblue;
+    background-color: #8e9191;
     border-radius: 4px;
     cursor: pointer;
     -webkit-transition: height 0.2s ease-in-out,
@@ -1002,7 +994,7 @@ div#content--container {
 }
 
 #forms--item--wrap .forms--item:hover {
-    border: 2px solid lightskyblue;
+    border: 2px solid #8e9191;
     background-color: transparent;
     height: 100px;
     padding: 20px 10px;
@@ -1018,6 +1010,134 @@ div#content--container {
     padding: 0;
     text-align: center;
     opacity: 0.7;
+}
+
+
+#form--wrap form {
+    height: 80%;
+    margin: auto;
+    padding: 20px 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -ms-flex-line-pack: center;
+        align-content: center;
+}
+
+
+#form--wrap .form--group {
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    margin: 10px auto;
+    position: relative;
+}
+
+.form--group input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+	height: 40px;
+    padding: 0 0.5em;
+    background-color: transparent;
+    background-image: -webkit-linear-gradient(left, #6a7989, #6a7989);
+    background-image: linear-gradient(90deg, #6a7989, #6a7989);
+    background-repeat: no-repeat;
+    background-size: 0% 4px;
+    background-position: bottom center;
+	text-align: left;
+	border: none;
+    border-bottom: 2px solid#6a7989;
+	border-radius: 2px;
+    display: block;
+    -webkit-transition: background-size 0.3s ease-in-out;
+    transition: background-size 0.3s ease-in-out;
+}
+
+
+
+.form--group input:focus {
+    background-size: 100% 4px;
+    border-bottom: none;
+	outline: none;
+}
+
+.form--group label {
+    width: 100%;
+    padding: 0;
+    padding-left: 0.5em;
+	color: #8e9191;
+    font-weight: bold;
+    opacity: 0.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: left;
+    display: block;
+    pointer-events: none;
+}
+
+.form--group label::after {
+    opacity: 0;
+    content: '';
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	background-color: #6a7989;
+	top: 100%;
+    right: 0;
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+	/*-webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
+	transition: transform 0.3s, background-color 0.3s;*/
+}
+
+.form--group input:focus ~ label::after {
+    opacity: 1;
+}
+
+
+#form--wrap .form--btns {
+    width: auto;
+    height: auto;
+    margin: 20px auto;
+    padding: 0; 
+}
+
+
+#form--wrap button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+        appearance: none;
+    width: 100px;
+    height: 35px;
+    margin: 0 20px;
+    padding: 0;
+    border: 2px solid #4d5256;
+    border-radius: 4px;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-transition: background-color 0.35s ease-in-out;
+    transition: background-color 0.35s ease-in-out;
+}
+
+#form--wrap button:hover {
+    border: none;
+    background-color: #4d5256;
 }
 
 
