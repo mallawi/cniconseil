@@ -29,6 +29,12 @@
                 {{ Form::text("telephone--number") }}
             </div>
 
+
+            <div class="form--group form--message">
+                {{ Form::label("message", "Message") }}
+                {{ Form::textarea("message") }}
+            </div>
+
             <div class="form--btns">
                 {{ Form::button("Anuller", ["class" => "form--btn form--cancel-btn"]) }}
                 {{ Form::button("Soumettre", ["class" => "form--btn form--submit-btn", "type" => "submit"]) }}

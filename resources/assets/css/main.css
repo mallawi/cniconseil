@@ -555,7 +555,7 @@ footer#main--footer {
 
 #form--wrap .form--group {
     width: 100%;
-    max-width: 300px;
+    max-width: 600px;
     height: auto;
     margin: 10px auto;
     position: relative;
@@ -566,8 +566,8 @@ footer#main--footer {
        -moz-appearance: none;
             appearance: none;
     width: 100%;
-    max-width: 100%;
-    margin: 0;
+    max-width: 300px;
+    margin: 0 auto;
 	height: 40px;
     padding: 0 0.5em;
     background-color: transparent;
@@ -595,6 +595,8 @@ footer#main--footer {
 
 .form--group label {
     width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
     padding: 0;
     padding-left: 0.5em;
 	/*color: #f4f6f9;*/
@@ -627,6 +629,27 @@ footer#main--footer {
 
 .form--group input:focus ~ label::after {
     opacity: 1;
+}
+
+
+.form--message label {
+    max-width: 60%;
+}
+
+
+.form--group textarea {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    resize: none;
+    width: 70%;
+    min-width: 300px;
+    height: 200px;
+    margin: 5px auto 0;
+    background-color: transparent;
+    border: 2px solid#3a3e41;
+	border-radius: 2px;
+    display: block;
 }
 
 

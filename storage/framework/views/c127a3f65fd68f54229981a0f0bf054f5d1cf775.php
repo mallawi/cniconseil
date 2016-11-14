@@ -38,6 +38,14 @@
 
             </div>
 
+
+            <div class="form--group form--message">
+                <?php echo e(Form::label("message", "Message")); ?>
+
+                <?php echo e(Form::textarea("message")); ?>
+
+            </div>
+
             <div class="form--btns">
                 <?php echo e(Form::button("Anuller", ["class" => "form--btn form--cancel-btn"])); ?>
 
