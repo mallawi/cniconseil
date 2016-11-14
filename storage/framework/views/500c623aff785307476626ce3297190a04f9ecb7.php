@@ -66,11 +66,6 @@
         <section class="apropos--section">
                 <h2>Qui sommes-nous</h2>
         </section>
-
-        
-        <section id="contact" class="contact--section">
-            
-        </section>
     </div>
 <?php $__env->stopSection(); ?>
 

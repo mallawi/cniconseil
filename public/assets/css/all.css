@@ -504,8 +504,8 @@ body {
 main#main--container {
     width: 100%;
     height: 100%;
-    background-color: #d8dbdd;
-    color: #fafafa;
+    background-color: #f7f8f8;
+    color: #0a0a0a;
 }
 
 
@@ -624,6 +624,7 @@ header#main--header {
     margin: 5px 0;
     padding: 0;
     text-align: center;
+    color: #f7f8f8;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -849,25 +850,6 @@ footer#main--footer {
     padding: 0;
 }
 
-@media (min-width: 770px) {
-    #content--container {
-        /*padding: 0 50px;*/
-    }
-}
-
-
-@media (min-width: 990px) {
-    #content--container {
-        /*padding: 0 100px;*/
-    }
-}
-
-@media (min-width: 1200px) {
-    #content--container {
-        /*padding: 0 200px;*/
-    }
-}
-
 
 /*
 ** PRESENTATION
@@ -910,11 +892,9 @@ footer#main--footer {
 #content--container .forms--section {
     width: 100%;
     height: auto;
-    padding: 50px 50px;
+    padding: 50px 0;
     /*background-color: #72797f;*/
     background-clip: padding-box;
-    
-
 }
 
 .forms--section #forms--item--wrap {
@@ -940,7 +920,7 @@ footer#main--footer {
 .forms--section #form--container {
     width: 100%;
     height: 0;
-    margin: auto;
+    margin: 0;
     padding: 0;
     background-color: #72797f;
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
@@ -961,9 +941,9 @@ footer#main--footer {
 }
 
 #form--container #form--wrap {
-    width: 80%;
+    width: 100%;
     height: 100%;
-    margin: auto;
+    margin: 0 auto;
     padding: 50px 0;
     /*background-color: darkslateblue;*/
 }
@@ -981,7 +961,8 @@ footer#main--footer {
     height: 80px;
     margin: 20px auto;
     padding: 10px;
-    background-color: #8e9191;
+    color: #f7f8f8;
+    background-color: #686f75;
     border-radius: 4px;
     cursor: pointer;
     -webkit-transition: height 0.2s ease-in-out,
@@ -1018,9 +999,9 @@ footer#main--footer {
 
 
 #form--wrap form {
-    height: 80%;
-    margin: auto;
-    padding: 20px 50px;
+    height: 100%;
+    margin: 0;
+    padding: 20px 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1035,8 +1016,8 @@ footer#main--footer {
 
 
 #form--wrap .form--group {
-    width: 300px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 300px;
     height: auto;
     margin: 10px auto;
     position: relative;
@@ -1104,8 +1085,6 @@ footer#main--footer {
     right: 0;
 	-webkit-transform-origin: 50% 100%;
 	transform-origin: 50% 100%;
-	/*-webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
-	transition: transform 0.3s, background-color 0.3s;*/
 }
 
 .form--group input:focus ~ label::after {
@@ -1127,7 +1106,7 @@ footer#main--footer {
         appearance: none;
     width: 100px;
     height: 35px;
-    margin: 0 20px;
+    margin: 0 5px;
     padding: 0;
     border: 2px solid #4d5256;
     border-radius: 4px;
@@ -1139,23 +1118,38 @@ footer#main--footer {
     transition: background-color 0.35s ease-in-out;
 }
 
-#form--wrap button:hover {
-    border: none;
-    background-color: #4d5256;
-}
-
 
 @media (min-width: 770px) {
-    .forms--section .forms--item {
-        margin: 20px 20px;
+     #content--container .forms--section {
+        padding: 100px 50px;
+    
+    }
+
+    #forms--item--wrap .forms--item {
+        margin: 20px 25px;
+    }
+
+
+    #form--wrap form {
+        height: 80%;
+        margin: auto;
+        padding: 20px 50px;
+    }
+
+    #form--wrap button {
+        margin: 0 20px;
+    }
+
+    #form--wrap button:hover {
+        border: none;
+        background-color: #4d5256;
     }
 }
 
 
 @media (min-width: 990px) {
     #content--container .forms--section {
-        padding: 100px 50px;
-    
+        padding: 100px 100px;
     }
 
     .forms--section #forms--item--wrap {
@@ -1172,7 +1166,7 @@ footer#main--footer {
 
 @media (min-width: 1200px) {
     #content--container .forms--section {
-        padding: 100px 200px;
+        padding: 100px 150px;
     }
 }
 
@@ -1186,7 +1180,7 @@ footer#main--footer {
 #content--container .annonces--section {
     width: 100%;
     height: 580px;
-    padding: 0 30px;
+    padding: 0 5px;
     /*background-color: cadetblue;        */
     
 }
@@ -1307,8 +1301,6 @@ footer#main--footer {
 }
 
 
-
-
 @media (min-width: 770px) {
     #content--container .annonces--section {
         padding: 0 50px;
@@ -1349,7 +1341,7 @@ footer#main--footer {
 #content--container .apropos--section {
     width: 100%;
     height: 400px;
-    padding: 0 200px;
+    padding: 0;
     background-color: dodgerblue;
 }
 
@@ -1360,15 +1352,23 @@ footer#main--footer {
 }
 
 
-/*
-** INFO
-*/
 
-#content--container .contact--section {
-    width: 100%;
-    height: 400px;
-    padding: 0 200px;
-    background-color: dodgerblue;  
+@media (min-width: 770px) {
+    #content--container .apropos--section {
+        padding: 0 50px;
+    }
+}
+
+
+@media (min-width: 990px) {
+    #content--container .apropos--section {
+        padding: 0 100px;
+    }
+  
+}
+
+@media (min-width: 1200px) {
+  
 }
 
 
