@@ -1,7 +1,7 @@
 const elixir = require('laravel-elixir'),
     gulp = require('gulp'),
     connect = require('gulp-connect-php'),
-    browserSync = require('browser-sync'),
+    // browserSync = require('browser-sync'),
     path = require("path");
     
 // require("laravel-elixir-browsersync-official");
@@ -23,35 +23,39 @@ elixir((mix) => {
         "normalize.css",
         "main.css"
     ], "public/assets/css")
-    .webpack("app.js", "public/assets/js")
+    .webpack("app.js", "public/assets/js").
+    browserSync({
+        proxy: "homestead.dev",
+        files: ["public/**", "resources/**", "app/**"]
+    });
 });
 
 // Starting gulp-connect-php and browserSync server
-gulp.task('connect', () => {
-  connect.server({
-      base: "./public",
-      port: "8000"
-  }, () => {
-    browserSync({
-      proxy: "127.0.0.1:8000"
-    });
-  });
-});
+// gulp.task('connect', () => {
+//   connect.server({
+//       base: "./public",
+//       port: "8000"
+//   }, () => {
+//     browserSync({
+//       proxy: "127.0.0.1:8000"
+//     });
+//   });
+// });
 
 
 // Task for watching files for changes 
-gulp.task("watcher", function() {
-    gulp.watch(["./public/**", "./resources/**", "./app/**"]).on("change", browserSync.reload);
-});
+// gulp.task("watcher", function() {
+//     gulp.watch(["./public/**", "./resources/**", "./app/**"]).on("change", browserSync.reload);
+// });
 
 
-// Serving
-gulp.task('serve', ["connect", "watcher"]);
+// // Serving
+// gulp.task('serve', ["connect", "watcher"]);
 
 
 // Moving files from build to repo
 gulp.task("move", function() {
-    gulp.src(["./**", "!./node_modules"])
+    gulp.src(["!node_modules", "!.vagrant", " !vendor", "./**"])
     .pipe(gulp.dest(path.join(__dirname, "../GitHub/cniconseil")));
 });
 

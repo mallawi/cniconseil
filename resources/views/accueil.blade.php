@@ -1,5 +1,6 @@
-
 @extends("layouts.base")
+
+@section("title", "CNI Conseil &horbar; Accueil")
 
 @section("content")
     <div id="content--container">

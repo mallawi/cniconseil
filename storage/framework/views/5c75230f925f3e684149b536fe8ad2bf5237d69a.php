@@ -1,3 +1,5 @@
+<?php $__env->startSection("title", "CNI Conseil &horbar; Services"); ?>
+
 <?php $__env->startSection("content"); ?>
     <h1>Services Page</h1>
 <?php $__env->stopSection(); ?>
