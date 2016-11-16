@@ -12,23 +12,39 @@
         <section id="forms--wrapper" class="forms--section">
             <div id="forms--item--wrap">
                 <div class="acheter--form-item forms--item"  data-type="acheter">
-                    <h3>Acheter</h3>
+                    <h4>Acheter</h4>
                     <p>Voulez-vous acheter?</p>
+
+                    <span class="form--request-progress">
+                        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                    </span>
                 </div>
 
                 <div class="vendre--form-item forms--item" data-type="vendre">
-                    <h3>Vendre</h3>
+                    <h4>Vendre</h4>
                     <p>Voulez-vous vendre?</p>
+
+                    <span class="form--request-progress">
+                        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                    </span>
                 </div>
 
                 <div class="investir--form-item forms--item" data-type="investir">
-                    <h3>Investiment</h3>
+                    <h4>Investiment</h4>
                     <p>Voulez-vous investir?</p>
+
+                    <span class="form--request-progress">
+                        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                    </span>
                 </div>
 
                 <div class="louer--form-item forms--item" data-type="louer">
-                    <h3>Logement</h3>
+                    <h4>Logement</h4>
                     <p>Voulez-vous louer?</p>
+
+                    <span class="form--request-progress">
+                        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                    </span>
                 </div>
             </div>
 
@@ -61,7 +77,9 @@
             </div>
 
             <div class="annonces--link">
-                <a href="<?php echo e(url('/annonces')); ?>">Voir les annonces</a>
+                <button type="button" class="annonces--link-btn mdl-button mdl-js-button mdl-button--raised">
+                    <a href="<?php echo e(url('/annonces')); ?>">Voir les annonces</a>
+                </button>
             </div>
         </section>
 

@@ -2,60 +2,54 @@
 
 <?php $__env->startSection("content"); ?>
     <div id="form--wrap">
-        <h1>Acheter</h1>
-        <?php echo Form::open(["url" => "foo/bar", "class" => "acheter--form"]); ?>
+        <h3>Acheter</h3>
+
+        <form  method="POST" action="/foo/bar" accept-charset="UTF-8" id="form" class="acheter--form">
+            <?php echo e(csrf_field()); ?>
+
 
             <div class="form--group">
-                <?php echo e(Form::label("last--name", "Nom")); ?>
+                <label for="lname" class="">Nom</label>
+                <input name="last--name" type="text" id="lname" class="">
+            </div>
 
-                <?php echo e(Form::text("last--name")); ?>
 
+            <div class="form--group">
+                <label for="fname">Prenom</label>
+                <input name="first--name" type="text" id="fname">
             </div>
 
             <div class="form--group">
-                <?php echo e(Form::label("first--name", "Prenom")); ?>
-
-                <?php echo e(Form::text("first--name")); ?>
-
+                <label for="email">Adresse mail</label>
+                <input name="email" type="email" id="email">
             </div>
 
             <div class="form--group">
-                <?php echo e(Form::label("email", "Addresse mail")); ?>
-
-                <?php echo e(Form::text("email")); ?>
-
-            </div>
-
-            <div class="form--group">
-                <?php echo e(Form::label("phone--number", "Portable")); ?>
-
-                <?php echo e(Form::text("phone--number")); ?>
-
+                <label for="phone">Portable</label>
+                <input name="phone--number" type="tel" id="phone" pattern="[0-9]*">
             </div>
 
              <div class="form--group">
-                <?php echo e(Form::label("telephone--number", "Telephone")); ?>
+                <label for="telephone">Telephone</label>
+                <input name="telephone--number" type="tel" id="telephone" pattern="[0-9]*">
+            </div>
 
-                <?php echo e(Form::text("telephone--number")); ?>
-
+            <div class="form--group form--budget form--group-row">
+                <label for="budget">Budget</label>
+                <input name="budget" type="text" id="budget" placeholder="&euro;">
             </div>
 
 
             <div class="form--group form--message">
-                <?php echo e(Form::label("message", "Message")); ?>
-
-                <?php echo e(Form::textarea("message")); ?>
-
+                <label for="message">Message</label>
+                <textarea name="message" cols="50" rows="10" id="message"></textarea>
             </div>
 
             <div class="form--btns">
-                <?php echo e(Form::button("Anuller", ["class" => "form--btn form--cancel-btn"])); ?>
-
-                <?php echo e(Form::button("Soumettre", ["class" => "form--btn form--submit-btn", "type" => "submit"])); ?>
-
+                <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Anuller</button>
+                <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="submit">Soumettre</button>
             </div>
-        <?php echo Form::close(); ?>
-
+        </form>
     </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make("layouts.forms", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

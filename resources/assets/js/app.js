@@ -2,10 +2,18 @@
     "use strict";
 
     // constructor function for XMLHttpRequest that return a promise
-    function XHRequest() {
+    function XHRequest(progress) {
+
+        var pCb = progress;
+
         function ajaxReq(method, url) {
             var promise = new Promise( function (resolve, reject) {
                 var xhr = new XMLHttpRequest();
+
+                if (pCb) {
+                    xhr.addEventListener("progress", pCb.progress);
+                    xhr.addEventListener("load", pCb.load);
+                }
 
                 xhr.open(method, url);
                 xhr.responseType = "document";
@@ -49,24 +57,15 @@
             var requestedData = data;
             var formHolder = document.getElementById("form--container");
             var requestedForm = requestedData.getElementById("form--wrap");
-            var oldForm;
 
             if (formHolder.classList.contains("form--shown")) {
-                // checking if form is the same then remove
-                if (currentFormRef.classList.contains("forms--item-current")) {
-                    oldForm = document.getElementById("form--wrap");
-                    formHolder.removeChild(oldForm);
-                    formHolder.classList.remove("form--shown");
-                    currentFormRef.classList.remove("forms--item-current");
-                    console.log("removed");
-                } else { // if not the same form replace it
-                    oldForm = document.getElementById("form--wrap");
-                    formHolder.replaceChild(requestedForm, oldForm);
-                    currentFormRef.classList.add("forms--item-current");
-                    oldFormRef.classList.remove("forms--item-current");
-                    oldFormRef = currentFormRef;
+                // replace the form
+                 var oldForm = document.getElementById("form--wrap");
+                formHolder.replaceChild(requestedForm, oldForm);
+                currentFormRef.classList.add("forms--item-current");
+                oldFormRef.classList.remove("forms--item-current");
+                oldFormRef = currentFormRef;
                     console.log("replaced");
-                }
             } else { // if no form shown add
                 formHolder.classList.add("form--shown");
                 currentFormRef.classList.add("forms--item-current");
@@ -87,7 +86,16 @@
             }
         }
 
-         function getForms(ev) {
+        var progressCb = {
+            progress: function(ev) {
+                currentFormRef.classList.add("form--item-progress");
+            },
+            load: function(ev) {
+                currentFormRef.classList.remove("form--item-progress");
+            }
+        }
+
+        function getForms(ev) {
             ev.preventDefault();
             ev.stopPropagation();
 
@@ -95,9 +103,18 @@
 
             var typeAttr = this.getAttribute("data-type");
 
+            if (this.classList.contains("forms--item-current") && this === oldFormRef) {
+                var oldForm = document.getElementById("form--wrap");
+                var formHolder = document.getElementById("form--container");
+                formHolder.removeChild(oldForm);
+                formHolder.classList.remove("form--shown");
+                currentFormRef.classList.remove("forms--item-current");
+                return;
+            }
+
             var url = "/form/" + typeAttr;
 
-            var xhrequest = new XHRequest();
+            var xhrequest = new XHRequest(progressCb);
 
             xhrequest.get(url).then(responseHandler.success).catch(responseHandler.failed);
         }

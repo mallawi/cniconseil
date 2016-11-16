@@ -21,9 +21,12 @@ const elixir = require('laravel-elixir'),
 elixir((mix) => {
     mix.styles([
         "normalize.css",
+        "./resources/assets/css/vendor/material.min.css",
         "main.css"
     ], "public/assets/css")
-    .webpack("app.js", "public/assets/js").
+    .webpack(
+        "app.js",
+        "public/assets/js").
     browserSync({
         proxy: "homestead.dev",
         files: ["public/**", "resources/**", "app/**"]

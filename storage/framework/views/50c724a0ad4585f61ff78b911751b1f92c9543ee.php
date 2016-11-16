@@ -13,5 +13,6 @@
             <?php echo $__env->make("includes.footer", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </main>
         <script src="assets/js/app.js"></script>
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
     </body>
 </html>
