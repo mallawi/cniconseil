@@ -17,7 +17,6 @@ Route::get("annonces", "PagesController@annonces");
 
 Route::get("services", "PagesController@services");
 
-
 Route::get("form/{type?}", "RequestsController@form");
 
 

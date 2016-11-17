@@ -587,8 +587,8 @@ footer#main--footer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
@@ -598,8 +598,9 @@ footer#main--footer {
 
 
 #form--wrap .form--group {
-    width: 100%;
-    max-width: 600px;
+    width: 50%;
+    min-width: 320px;
+    /*max-width: 320px;*/
     height: auto;
     margin: 10px auto;
     position: relative;
@@ -701,10 +702,27 @@ footer#main--footer {
     width: auto;
     max-width: auto;
     margin: auto 10px 0 auto;
-    padding-bottom: 5px;
     display: inline-block;
 }
 
+
+.form--type label {
+    margin: auto 10px auto auto;
+}
+
+.form--type select {
+    width: 150px;
+    margin: auto auto auto 0;
+    height: 30px;
+    color: #f7f8f8;
+    background-color: #3a3e41;
+    border: none;
+    border-radius: 2px;
+}
+
+.form--budget label {
+    padding-bottom: 5px;    
+}
 .form--budget input::-webkit-input-placeholder {
     text-align: right;
     color: #3a3e41;
@@ -786,6 +804,7 @@ footer#main--footer {
 
 
     #form--wrap form {
+        width: 80%;
         height: 80%;
         margin: auto;
         padding: 20px 50px;

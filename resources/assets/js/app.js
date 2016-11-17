@@ -103,13 +103,15 @@
 
             var typeAttr = this.getAttribute("data-type");
 
-            if (this.classList.contains("forms--item-current") && this === oldFormRef) {
-                var oldForm = document.getElementById("form--wrap");
-                var formHolder = document.getElementById("form--container");
-                formHolder.removeChild(oldForm);
-                formHolder.classList.remove("form--shown");
-                currentFormRef.classList.remove("forms--item-current");
-                return;
+            if (this.classList.contains("forms--item-current")) {
+                 if (oldFormRef && this === oldFormRef) {
+                    var oldForm = document.getElementById("form--wrap");
+                    var formHolder = document.getElementById("form--container");
+                    formHolder.removeChild(oldForm);
+                    formHolder.classList.remove("form--shown");
+                    currentFormRef.classList.remove("forms--item-current");
+                    return;
+                }
             }
 
             var url = "/form/" + typeAttr;
