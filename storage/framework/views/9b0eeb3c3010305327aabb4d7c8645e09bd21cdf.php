@@ -9,49 +9,49 @@
 
 
             <div class="form--group form--group-row form--group-double">
-                <label for="lname" class="">Nom</label>
-                <input name="last--name" type="text" id="lname" class="" autocomplete="family-name">
+                <label for="last--name" class="">Nom</label>
+                <input name="lname" type="text" id="last--name" class="" autocomplete="family-name">
             </div>
 
             <div class="form--group form--group-row form--group-double">
-                <label for="fname">Prenom</label>
-                <input name="first--name" type="text" id="fname" autocomplete="given-name">
+                <label for="first--name">Prenom</label>
+                <input name="fname" type="text" id="first--name" autocomplete="given-name">
             </div>
 
             <div class="form--group form--group-row">
-                <label for="email">Adresse mail</label>
-                <input name="email" type="email" id="email" autocomplete="email">
+                <label for="email--address">Adresse mail</label>
+                <input name="email" type="email" id="email--address" autocomplete="email">
             </div>
 
             <div class="form--group form--group-row form--group-double">
-                <label for="phone">Telephone Mobile</label>
-                <input name="phone--number" type="tel" id="phone" pattern="[0-9]*" autocomplete="tel">
+                <label for="phone--number">Telephone Mobile</label>
+                <input name="phone" type="tel" id="phone--number" pattern="[0-9]*" autocomplete="tel">
             </div>
 
             <div class="form--group form--group-row form--group-double">
-                <label for="telephone">Telephone</label>
-                <input name="telephone--number" type="tel" id="telephone" pattern="[0-9]*">
+                <label for="telephone--number">Telephone</label>
+                <input name="telephone" type="tel" id="telephone--number" pattern="[0-9]*">
             </div>
 
 
             <div class="form--group form--group-row">
                 <label for="adresse">Adresse</label>
-                <input name="Adresse" type="text" id="adresse" autocomplete="address-line1">
+                <input name="adresse" type="text" id="adresse" autocomplete="address-line1">
             </div>
 
             <div class="form--group form--group-row">
-                <label for="codepostal">Code Postal</label>
-                <input name="Postal" type="text" id="codepostal" autocomplete="postal-code">
+                <label for="code--postal">Code Postal</label>
+                <input name="codepostal" type="text" id="code--postal" autocomplete="postal-code">
             </div>
 
              <div class="form--group form--group-row">
-                <label for="ville">Ville</label>
-                <input name="Ville" type="text" id="ville">
+                <label for="ville--address">Ville</label>
+                <input name="ville" type="text" id="ville--address">
             </div>
 
             <div class="form--group form--select form--group-row form--group-double">
-                <label for="achat">Type de bien</label>
-                <select name="typeSelect" id="achat" required>
+                <label for="type--achat">Type de bien</label>
+                <select name="achat" id="type--achat" required>
                     <option value="maison">Maison</option> 
                     <option value="appartement">Appartement</option>
                     <option value="terrain">Terrain</option>
@@ -65,7 +65,7 @@
 
             <div class="form--group form--group-row">
                 <label for="sector">Lieu/Secteur</label>
-                <input name="Sector" type="text" id="sector">
+                <input name="lieu" type="text" id="sector">
             </div>
 
             <div class="form--group form--message">

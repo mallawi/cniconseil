@@ -6,7 +6,7 @@
 
         var pCb = progress;
 
-        function ajaxReq(method, url) {
+        function ajaxReq(method, url, data) {
             var promise = new Promise( function (resolve, reject) {
                 var xhr = new XMLHttpRequest();
 
@@ -15,9 +15,16 @@
                     xhr.addEventListener("load", pCb.load);
                 }
 
+                if (method === "GET") {
+                    xhr.responseType = "document";
+                }
+                    
                 xhr.open(method, url);
-                xhr.responseType = "document";
-                xhr.send();
+
+                if (data)
+                    xhr.send(data);  
+                else
+                    xhr.send();
 
                 xhr.onreadystatechange = function() {
                     if (this.readyState === 4) {
@@ -39,7 +46,8 @@
             get: function(url) {
                 return ajaxReq("GET", url);
             },
-            post: function(url) {
+            post: function(url, data) {
+                if (data) { return ajaxReq("POST", url, data); }
                 return ajaxReq("POST", url);
             }
         }
@@ -53,7 +61,6 @@
         return {
             init: function() {
                 formsGetHandler();
-                // this.formHandler =  formsPostHandler;
             },
             makeChanges: function(data) {
                 var requestedData = data;
@@ -67,6 +74,8 @@
                     this.formRef.current.classList.add("forms--item-current");
                     this.formRef.old.classList.remove("forms--item-current");
                     this.formRef.old = this.formRef.current;
+
+                    this.formHandler.listen(formHolder.getElementsByClassName("form--btn"));
                     console.log("replaced");
                 } else { // if no form shown add
                     formHolder.classList.add("form--shown");
@@ -85,13 +94,14 @@
             },
             formHandler: {
                 listen: function(formBtns) {
-                    console.log(formBtns);
-                    formBtns[0].addEventListener("submit", function() {
-                        return false;
+                    formBtns[0].addEventListener("click", function() {
+                        console.log(this);
                     });
 
-                    formBtns[1].addEventListener("submit", function() {
-                        return false;
+                    formBtns[1].addEventListener("click", function(ev) {
+                        ev.preventDefault();
+                        formsPostHandler(document.forms[0]);
+                        console.log(document.forms[0]);
                     });
                 }
             }
@@ -154,12 +164,32 @@
     }
 
 
-    var formsPostHandler = {
-        init: function(formEl) {
-            formEl.addEventListener("submit", function() {
-                return false;
-            });
+    function formsPostHandler(formEl) {
+        var formData = new FormData(formEl);
+        var formAction = formEl.getAttribute("data-action");
+
+
+        var progressCb = {
+            progress: function(ev) {
+            },
+            load: function(ev) {
+                console.log(ev);
+            }
         }
+
+        console.log(formData);
+
+        var responseHandler = {
+            success: function(data) {
+                console.log(data);
+            },
+            failed: function(status) {
+                console.log(status);
+            }
+        }
+        
+        var xhrequest = new XHRequest(progressCb);
+        xhrequest.post(formAction, formData).then(responseHandler.success).catch(responseHandler.failed);
     }
 
     // function handler for handling slider from the index page

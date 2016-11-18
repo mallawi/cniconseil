@@ -12,4 +12,12 @@ class RequestsController extends Controller
 
         return view($formType);
     }
+
+
+    public function store(Request $request)
+    {
+        $formData = $request->all();
+
+        return $formData;
+    }
 }
