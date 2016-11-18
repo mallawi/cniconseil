@@ -4,28 +4,28 @@
     <div id="form--wrap">
         <h3>Aquisition</h3>
 
-        <form  method="POST" action="/foo/bar" accept-charset="UTF-8" id="acheter--form" class="form--el">
+        <form data-action="/form" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="acheter--form" class="form--el">
             <?php echo e(csrf_field()); ?>
 
 
             <div class="form--group form--group-row form--group-double">
                 <label for="lname" class="">Nom</label>
-                <input name="last--name" type="text" id="lname" class="" autocomplete="family-name" requered>
+                <input name="last--name" type="text" id="lname" class="" autocomplete="family-name">
             </div>
 
             <div class="form--group form--group-row form--group-double">
                 <label for="fname">Prenom</label>
-                <input name="first--name" type="text" id="fname" autocomplete="given-name" required>
+                <input name="first--name" type="text" id="fname" autocomplete="given-name">
             </div>
 
             <div class="form--group form--group-row">
                 <label for="email">Adresse mail</label>
-                <input name="email" type="email" id="email" autocomplete="email" required>
+                <input name="email" type="email" id="email" autocomplete="email">
             </div>
 
             <div class="form--group form--group-row form--group-double">
                 <label for="phone">Telephone Mobile</label>
-                <input name="phone--number" type="tel" id="phone" pattern="[0-9]*" autocomplete="tel" required>
+                <input name="phone--number" type="tel" id="phone" pattern="[0-9]*" autocomplete="tel">
             </div>
 
             <div class="form--group form--group-row form--group-double">
@@ -60,12 +60,12 @@
 
             <div class="form--group form--budget form--group-row form--group-double">
                 <label for="budget">Budget</label>
-                <input name="budget" type="text" id="budget" placeholder="&euro;" required>
+                <input name="budget" type="text" id="budget" placeholder="&euro;">
             </div>
 
             <div class="form--group form--group-row">
                 <label for="sector">Lieu/Secteur</label>
-                <input name="Sector" type="text" id="sector" required>
+                <input name="Sector" type="text" id="sector">
             </div>
 
             <div class="form--group form--message">
@@ -74,8 +74,8 @@
             </div>
 
             <div class="form--btns">
-                <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Anuller</button>
-                <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="submit">Soumettre</button>
+                <button id="form--cancel-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Anuller</button>
+                <button id="form--submit-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Soumettre</button>
             </div>
         </form>
     </div>

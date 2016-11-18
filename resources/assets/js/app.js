@@ -46,40 +46,66 @@
 
     }
 
+    var formsHandler;
 
-    function formsHandler() {
-        var formsItem = document.getElementsByClassName("forms--item");
-        var currentFormRef;
-        var oldFormRef;
+    function FormsHandler() {
 
+        return {
+            init: function() {
+                formsGetHandler();
+                // this.formHandler =  formsPostHandler;
+            },
+            makeChanges: function(data) {
+                var requestedData = data;
+                var formHolder = document.getElementById("form--container");
+                var requestedForm = requestedData.getElementById("form--wrap");
 
-        function makeChanges(data) {
-            var requestedData = data;
-            var formHolder = document.getElementById("form--container");
-            var requestedForm = requestedData.getElementById("form--wrap");
-
-            if (formHolder.classList.contains("form--shown")) {
-                // replace the form
-                 var oldForm = document.getElementById("form--wrap");
-                formHolder.replaceChild(requestedForm, oldForm);
-                currentFormRef.classList.add("forms--item-current");
-                oldFormRef.classList.remove("forms--item-current");
-                oldFormRef = currentFormRef;
+                if (formHolder.classList.contains("form--shown")) {
+                    // replace the form
+                    var oldForm = document.getElementById("form--wrap");
+                    formHolder.replaceChild(requestedForm, oldForm);
+                    this.formRef.current.classList.add("forms--item-current");
+                    this.formRef.old.classList.remove("forms--item-current");
+                    this.formRef.old = this.formRef.current;
                     console.log("replaced");
-            } else { // if no form shown add
-                formHolder.classList.add("form--shown");
-                currentFormRef.classList.add("forms--item-current");
+                } else { // if no form shown add
+                    formHolder.classList.add("form--shown");
+                    this.formRef.current.classList.add("forms--item-current");
+                    formHolder.appendChild(requestedForm);
+                    this.formRef.old = this.formRef.current;
+            
+                    this.formHandler.listen(formHolder.getElementsByClassName("form--btn"));
 
-                formHolder.appendChild(requestedForm);
-                oldFormRef = currentFormRef;
-                
-                console.log("added"); 
+                    console.log("added");
+                }
+            },
+            formRef: {
+                old: null,
+                current: null
+            },
+            formHandler: {
+                listen: function(formBtns) {
+                    console.log(formBtns);
+                    formBtns[0].addEventListener("submit", function() {
+                        return false;
+                    });
+
+                    formBtns[1].addEventListener("submit", function() {
+                        return false;
+                    });
+                }
             }
         }
+    }
+
+
+    function formsGetHandler() {
+        var formsItem = document.getElementsByClassName("forms--item");
+        var currentFormRef;
 
         var responseHandler = {
             success: function(data) {
-                makeChanges(data);
+                formsHandler.makeChanges(data);
             },
             failed: function(status) {
                 console.log(status);
@@ -100,11 +126,12 @@
             ev.stopPropagation();
 
             currentFormRef = this;
+            formsHandler.formRef.current = this;
 
             var typeAttr = this.getAttribute("data-type");
 
             if (this.classList.contains("forms--item-current")) {
-                 if (oldFormRef && this === oldFormRef) {
+                 if (formsHandler.formRef.old && this === formsHandler.formRef.old) {
                     var oldForm = document.getElementById("form--wrap");
                     var formHolder = document.getElementById("form--container");
                     formHolder.removeChild(oldForm);
@@ -123,6 +150,15 @@
 
         for (var i = 0; i < formsItem.length; i++) {
             formsItem[i].addEventListener("click", getForms);
+        }
+    }
+
+
+    var formsPostHandler = {
+        init: function(formEl) {
+            formEl.addEventListener("submit", function() {
+                return false;
+            });
         }
     }
 
@@ -235,14 +271,13 @@
            }
         });
     } 
-    
-
 
     document.onreadystatechange = function() {
         if (document.readyState === "complete") {
             init();
             navHandler();
-            formsHandler();
+            formsHandler = new FormsHandler();
+            formsHandler.init();
             sliderHandler();
         }
     }

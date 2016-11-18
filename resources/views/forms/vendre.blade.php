@@ -4,7 +4,7 @@
     <div id="form--wrap">
         <h3>Vente</h3>
 
-         <form method="POST" action="/foo/bar" accept-charset="UTF-8"  id="vendre--form" class="form--el">
+         <form method="POST" action="/form" accept-charset="UTF-8" autocomplete="on" id="vendre--form" class="form--el">
             {{ csrf_field() }}
 
             <div class="form--group form--group-row form--group-double">
