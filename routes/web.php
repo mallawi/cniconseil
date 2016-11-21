@@ -13,6 +13,8 @@
 
 Route::get("/", "PagesController@index");
 
+Route::get("annonces/{id}", "PagesController@showAnnonce");
+
 Route::get("annonces", "PagesController@annonces");
 
 Route::get("services", "PagesController@services");

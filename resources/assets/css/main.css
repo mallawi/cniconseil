@@ -407,7 +407,7 @@ footer#main--footer {
 */
 
 
-#content--container {
+#content--container-accueil {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -418,7 +418,7 @@ footer#main--footer {
 ** PRESENTATION
 */
 
-#content--container .presentation--section {
+#content--container-accueil .presentation--section {
     width: 100%;
     padding: 20px 0;
     padding-top: 50px; 
@@ -452,7 +452,7 @@ footer#main--footer {
 ** Formulaires 
 */
 
-#content--container .forms--section {
+#content--container-accueil .forms--section {
     width: 100%;
     height: auto;
     padding: 50px 0;
@@ -817,7 +817,7 @@ footer#main--footer {
 
 
 @media (min-width: 770px) {
-     #content--container .forms--section {
+     #content--container-accueil .forms--section {
         padding: 100px 50px;
     
     }
@@ -878,7 +878,7 @@ footer#main--footer {
 
 
 @media (min-width: 990px) {
-    #content--container .forms--section {
+    #content--container-accueil .forms--section {
         padding: 100px 100px;
     }
 
@@ -895,7 +895,7 @@ footer#main--footer {
 }
 
 @media (min-width: 1200px) {
-    #content--container .forms--section {
+    #content--container-accueil .forms--section {
         padding: 100px 150px;
     }
 }
@@ -907,15 +907,15 @@ footer#main--footer {
 ** ANNONCES
 */
 
-#content--container .annonces--section {
+#content--container-accueil .annonces--section {
     width: 100%;
     height: 580px;
     padding: 0 5px;
-    /*background-color: cadetblue;        */
+    background-color: #f7f8f8;        
     
 }
 
-#content--container .annonce--slider-wrap {
+#content--container-accueil .annonce--slider-wrap {
     width: 100%;
     max-width: 900px;
     height: calc(100% - 80px);
@@ -1021,7 +1021,7 @@ footer#main--footer {
 
 
 @media (min-width: 770px) {
-    #content--container .annonces--section {
+    #content--container-accueil .annonces--section {
         padding: 0 50px;
     }
 
@@ -1044,13 +1044,13 @@ footer#main--footer {
 
 
 @media (min-width: 990px) {
-     #content--container .annonces--section {
+     #content--container-accueil .annonces--section {
         padding: 0 100px;
     }
 }
 
 @media (min-width: 1200px) {
-    #content--container .annonces--section {
+    #content--container-accueil .annonces--section {
         padding: 0 200px;
     }
 }
@@ -1061,7 +1061,7 @@ footer#main--footer {
 */
 
 
-#content--container .apropos--section {
+#content--container-accueil .apropos--section {
     width: 100%;
     height: 400px;
     padding: 0;
@@ -1075,16 +1075,15 @@ footer#main--footer {
 }
 
 
-
 @media (min-width: 770px) {
-    #content--container .apropos--section {
+    #content--container-accueil .apropos--section {
         padding: 0 50px;
     }
 }
 
 
 @media (min-width: 990px) {
-    #content--container .apropos--section {
+    #content--container-accueil .apropos--section {
         padding: 0 100px;
     }
   
@@ -1093,5 +1092,115 @@ footer#main--footer {
 @media (min-width: 1200px) {
   
 }
+
+
+/*
+** ===== ANNONCES PAGE =====
+*/
+
+#content--container-annonces {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+** ANNONCES GRIDS
+*/
+
+#content--container-annonces #annonces--grid-section {
+    width: 100%;
+    padding: 100px 5px;
+    background-color: #f7f8f8;
+}
+
+
+#annonces--grid-section .annonces--grid-cell {
+    height: 500px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 10px rgba(0, 0, 0, 0.1);
+    background-color: deepskyblue;
+    position: relative;
+
+}
+
+
+.annonces--grid-cell figure {
+    width: 100%;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.annonces--grid-cell img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.annonces--grid-cell .annonces--desc {
+    width: 100%;
+    height: 120px;
+    position: absolute;
+    top: 300px;
+    right: 0;
+}
+
+.annonces--grid-cell .annonces--desc h5 {
+    width: 100%;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.annonces--grid-cell .annonces--link-btn {
+    width: 140px;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    left: calc(50% - 70px);
+}
+
+.annonces--grid-cell .annonces--link-btn a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+}
+
+
+@media (min-width: 770px) {
+   #content--container-annonces #annonces--grid-section {
+        padding: 100px 25px;
+    }
+}
+
+
+@media (min-width: 990px) {
+    #content--container-annonces #annonces--grid-section {
+        padding: 100px 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #content--container-annonces #annonces--grid-section {
+        padding: 100px 200px;
+    }
+}
+
+
+
+
+
+
+
+
 
 

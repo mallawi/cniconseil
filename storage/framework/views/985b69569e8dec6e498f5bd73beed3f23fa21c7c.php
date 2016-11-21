@@ -1,7 +1,7 @@
 <?php $__env->startSection("title", "CNI Conseil &horbar; Accueil"); ?>
 
 <?php $__env->startSection("content"); ?>
-    <div id="content--container">
+    <div id="content--container-accueil">
         <section id="presentation" class="presentation--section">
             <hgroup class="pres--heading">
                 <h2>CNI Conseil</h2>

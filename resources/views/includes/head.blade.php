@@ -5,6 +5,6 @@
 
     <title>@yield("title")</title>
 
-    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 </head>

@@ -3,7 +3,7 @@
 @section("title", "CNI Conseil &horbar; Accueil")
 
 @section("content")
-    <div id="content--container">
+    <div id="content--container-accueil">
         <section id="presentation" class="presentation--section">
             <hgroup class="pres--heading">
                 <h2>CNI Conseil</h2>

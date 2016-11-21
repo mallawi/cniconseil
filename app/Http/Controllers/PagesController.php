@@ -15,6 +15,11 @@ class PagesController extends Controller
     {
         return view("annonces");
     }
+    
+    public function showAnnonce() 
+    {
+        return view("annonce");
+    }
 
     public function services() 
     {
