@@ -65,7 +65,7 @@
 
             <div class="form--group form--group-row">
                 <label for="adresse--bien">Adresse de bien</label>
-                <input name="Bien" type="text" id="adresse--bien">
+                <input name="addresseBien" type="text" id="adresse--bien">
             </div>
 
             <div class="form--group form--message">

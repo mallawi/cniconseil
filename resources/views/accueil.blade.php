@@ -51,6 +51,9 @@
             </div>
 
             <div id="form--container"></div>
+            <div id="form--confirmation-message">
+                <h3>Merci de remplir le formulaire</h3>
+            </div>
         </section>  
         
         <section id="annonces" class="annonces--section">

@@ -74,7 +74,7 @@
 
             <div class="form--btns">
                 <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Anuller</button>
-                <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Soumettre</button>
+                <button class="form--btn mdl-button mdl-js-button mdl-button--raised" type="submit">Soumettre</button>
             </div>
         </form>
     <div>

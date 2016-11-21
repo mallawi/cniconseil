@@ -10,7 +10,7 @@
 
             <div class="form--group form--group-row form--group-double">
                 <label for="last--name" class="">Nom</label>
-                <input name="lname" type="text" id="last--name" class="" autocomplete="family-name">
+                <input name="lname" type="text" id="last--name" class="" autocomplete="family-name" required>
             </div>
 
             <div class="form--group form--group-row form--group-double">
@@ -75,7 +75,7 @@
 
             <div class="form--btns">
                 <button id="form--cancel-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Anuller</button>
-                <button id="form--submit-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Soumettre</button>
+                <button id="form--submit-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="submit">Soumettre</button>
             </div>
         </form>
     </div>

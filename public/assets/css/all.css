@@ -968,6 +968,19 @@ footer#main--footer {
             transform: scale3d(1, 0, 1);
 }
 
+.forms--section #form--confirmation-message {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 20px 0;
+    background-color: #72797f;
+    display: none;
+}
+
+#form--confirmation-message.message--shown {
+    display: block;
+}
+
 
 #form--container.form--shown {
     height: auto;
@@ -983,13 +996,19 @@ footer#main--footer {
     /*background-color: darkslateblue;*/
 }
 
-
 #form--wrap h3 {
     height: 10%;
     margin: auto;
     text-align: center;
     opacity: 0.6;
 }
+
+
+ #form--confirmation-message h3 {
+    margin: auto;
+    text-align: center;
+    opacity: 0.6;
+ }
 
 #forms--item--wrap .forms--item {
     width: 250px;

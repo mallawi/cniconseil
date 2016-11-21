@@ -56,7 +56,7 @@
 
     var formsHandler;
 
-    function FormsHandler() {
+    function FormsHandler() { // constructor function for forms handling
 
         return {
             init: function() {
@@ -67,15 +67,14 @@
                 var formHolder = document.getElementById("form--container");
                 var requestedForm = requestedData.getElementById("form--wrap");
 
-                if (formHolder.classList.contains("form--shown")) {
-                    // replace the form
+                if (formHolder.classList.contains("form--shown")) { // replace the form if other shown
                     var oldForm = document.getElementById("form--wrap");
                     formHolder.replaceChild(requestedForm, oldForm);
                     this.formRef.current.classList.add("forms--item-current");
                     this.formRef.old.classList.remove("forms--item-current");
                     this.formRef.old = this.formRef.current;
 
-                    this.formHandler.listen(formHolder.getElementsByClassName("form--btn"));
+                    this.handle.listen();
                     console.log("replaced");
                 } else { // if no form shown add
                     formHolder.classList.add("form--shown");
@@ -83,26 +82,33 @@
                     formHolder.appendChild(requestedForm);
                     this.formRef.old = this.formRef.current;
             
-                    this.formHandler.listen(formHolder.getElementsByClassName("form--btn"));
+                    this.handle.listen();
 
                     console.log("added");
                 }
             },
-            formRef: {
+            formRef: { // forms references, current for requested, and old for the last
                 old: null,
                 current: null
             },
-            formHandler: {
-                listen: function(formBtns) {
-                    formBtns[0].addEventListener("click", function() {
-                        console.log(this);
-                    });
+            handle: { // listening for form submition and handling it
+                listen: function() {
+                    var formEl =  document.forms[0];
+                    console.log(formEl);
 
-                    formBtns[1].addEventListener("click", function(ev) {
+                    formEl.addEventListener("submit", function(ev) {
                         ev.preventDefault();
-                        formsPostHandler(document.forms[0]);
-                        console.log(document.forms[0]);
+
+                        formsPostHandler(formEl); // sending the form to be posted to server
+                        return false;
                     });
+                },
+                remove: function() {
+                    var oldForm = document.getElementById("form--wrap");
+                    var formHolder = document.getElementById("form--container");
+                    formHolder.removeChild(oldForm);
+                    formHolder.classList.remove("form--shown");
+                    formsHandler.formRef.old.classList.remove("forms--item-current");
                 }
             }
         }
@@ -142,11 +148,7 @@
 
             if (this.classList.contains("forms--item-current")) {
                  if (formsHandler.formRef.old && this === formsHandler.formRef.old) {
-                    var oldForm = document.getElementById("form--wrap");
-                    var formHolder = document.getElementById("form--container");
-                    formHolder.removeChild(oldForm);
-                    formHolder.classList.remove("form--shown");
-                    currentFormRef.classList.remove("forms--item-current");
+                    formsHandler.handle.remove();
                     return;
                 }
             }
@@ -165,22 +167,33 @@
 
 
     function formsPostHandler(formEl) {
+        console.log(formEl.checkValidity());
+
         var formData = new FormData(formEl);
         var formAction = formEl.getAttribute("data-action");
 
 
         var progressCb = {
             progress: function(ev) {
+
             },
             load: function(ev) {
-                console.log(ev);
+                // console.log(ev);
             }
         }
 
-        console.log(formData);
-
         var responseHandler = {
             success: function(data) {
+                formsHandler.handle.remove();
+
+                var confirmMsg = document.getElementById("form--confirmation-message");
+                confirmMsg.classList.add("message--shown");
+
+                var msgTimeout = setTimeout(function() {
+                    confirmMsg.classList.remove("message--shown");
+                    clearTimeout(msgTimeout);
+                }, 5000);
+
                 console.log(data);
             },
             failed: function(status) {
@@ -191,6 +204,9 @@
         var xhrequest = new XHRequest(progressCb);
         xhrequest.post(formAction, formData).then(responseHandler.success).catch(responseHandler.failed);
     }
+
+
+
 
     // function handler for handling slider from the index page
     function sliderHandler() {
