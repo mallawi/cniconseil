@@ -10,7 +10,7 @@
 
 
 /*
-** CLEAR FIX FOR FLOATING POINTS
+** CLEAR FIX FOR FLOATING ELEMENTS
 */
 
 .cf {
@@ -456,7 +456,7 @@ footer#main--footer {
     width: 100%;
     height: auto;
     padding: 50px 0;
-    /*background-color: #72797f;*/
+    background-color: #f7f8f8;
     background-clip: padding-box;
 }
 
@@ -548,20 +548,41 @@ footer#main--footer {
     border-radius: 4px;
     cursor: pointer;
     position: relative;
-    -webkit-transition: height 0.2s ease-in-out,
-        padding 0.2s ease-in-out,
-        background-color 0.2s ease-in-out;
-    transition: height 0.2s ease-in-out,
-        padding 0.2s ease-in-out,
-        background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+#forms--item--wrap .forms--item::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    display: inline-block;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transition: transform 0.2s ease-in-out;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    transition: -webkit-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
 }
 
 
 #forms--item--wrap .forms--item-current {
-    border: 2px solid #8e9191;
     background-color: transparent;
-    height: 100px;
-    padding: 10px;
+}
+
+#forms--item--wrap .forms--item-current::before {
+     border: 2px solid #8e9191;
+    -webkit-transform: scale3d(1, 1.2, 1);
+            transform: scale3d(1, 1.2, 1);
 }
 
 #forms--item--wrap .form--item-progress .form--request-progress {
@@ -569,10 +590,13 @@ footer#main--footer {
 }
 
 #forms--item--wrap .forms--item:hover {
-    border: 2px solid #8e9191;
     background-color: transparent;
-    height: 100px;
-    padding: 10px;
+}
+
+#forms--item--wrap .forms--item:hover::before {
+    border: 2px solid #8e9191;
+    -webkit-transform: scale3d(1, 1.2, 1);
+            transform: scale3d(1, 1.2, 1);
 }
 
 .forms--item h4 {
@@ -1153,6 +1177,8 @@ footer#main--footer {
     width: 100%;
     margin: 0;
     margin-top: 10px;
+    padding: 0;
+    padding-left: 10px;
 }
 
 .annonces--grid-cell .annonces--link-btn {
@@ -1193,6 +1219,61 @@ footer#main--footer {
     #content--container-annonces #annonces--grid-section {
         padding: 100px 200px;
     }
+}
+
+
+/*
+** ===== ANNONCES PAGE =====
+*/
+
+#content--container-annonce {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#content--container-annonce #annonce--section {
+    width: 100%;
+    padding: 100px 200px;
+}
+
+#annonce--section .annonce--gallery-wrap {
+    width: 50%;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    position: relative;
+}
+
+#annonce--section .annonce--desc-wrap {
+    width: 50%;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+#annonce--section .annonce--grid-item {
+    width: 100%;
+    height: 70%;
+    background-color: darkslateblue;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#annonce--section .annonce--grid-items {
+    width: 100%;
+    height: 30%;
+    background-color: slateblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.annonce--desc-wrap h4 {
+    text-align: center;
 }
 
 

@@ -60,7 +60,7 @@
                     <?php for($i = 0; $i < 3; $i++): ?>
                     <span class="slider--item">
                         <figure>
-                            <img src="http://placehold.it/900x500/fff/000">
+                            <img src="http://placehold.it/900x500/3a3e41/fff">
                         </figure>
                     </span>
                     <?php endfor; ?>

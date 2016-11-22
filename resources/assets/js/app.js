@@ -68,6 +68,7 @@
                 var requestedForm = requestedData.getElementById("form--wrap");
 
                 if (formHolder.classList.contains("form--shown")) { // replace the form if other shown
+                    // this.handle.replace(formHolder, requestedForm);
                     var oldForm = document.getElementById("form--wrap");
                     formHolder.replaceChild(requestedForm, oldForm);
                     this.formRef.current.classList.add("forms--item-current");
@@ -224,7 +225,7 @@
             
         }
         
-        // object for handling btns and slider items logicaly
+        // handler for btns and slider items
         var sControl = {
             previous: function(btn) {
                 if (nextBtn && nextBtn.disabled === true) {
@@ -282,9 +283,7 @@
 
         }
 
-
-        // for loops to add event listeners to btns and iterating over slider items
-        
+        // loops to add event listeners to btns and iterating over slider items
         for (var i = 0; i < sliderBtns.length; i++) {
             sliderBtns[i].addEventListener("click", sBtnHandler);
         }
