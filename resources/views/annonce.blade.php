@@ -11,9 +11,10 @@
                 </div>
 
                 <div class="annonce--grid-items mdl-grid">
-                    <div class="annonce--items-cell mdl-cell mdl-cell--4-col">4</div>
-                    <div class="annonce--items-cell mdl-cell mdl-cell--4-col">4</div>
-                    <div class="annonce--items-cell mdl-cell mdl-cell--4-col">4</div>
+                    <div class="annonce--items-cell mdl-cell mdl-cell--3-col">4</div>
+                    <div class="annonce--items-cell mdl-cell mdl-cell--3-col">4</div>
+                    <div class="annonce--items-cell mdl-cell mdl-cell--3-col">4</div>
+                    <div class="annonce--items-cell mdl-cell mdl-cell--3-col">4</div>
                 </div>
             </div>
 

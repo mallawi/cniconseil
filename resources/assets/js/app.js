@@ -213,16 +213,41 @@
     function sliderHandler() {
         var sliderBtns = document.getElementsByClassName("slider--btn");
         var sliderItems = document.getElementsByClassName("slider--item");
+
+        if (!sliderBtns.length || !sliderItems.length) { return; }
         var prevBtn;
         var nextBtn;
-        var itemIdx;
-        var currentItem;
+        var currentIdx;
+        var itemInterval;
+
+
+        function intervalSliderItem(rmv) {
+            if (!rmv) {
+                itemInterval = setInterval(function() {
+                    if (currentIdx) {
+                        for (var idx = 0; idx < sliderItems.length; idx++) {
+                            if (currentIdx === sliderItems[idx]) {
+                                var item = idx - 1;
+                                if (idx - 1 < 0) {
+                                    var item = sliderItems.length - 1;
+                                }
+
+                                changeSliderItem(currentIdx, sliderItems[item]);
+                                break;
+                            }
+                        }
+                    }
+                }, 2000);
+            } else {
+                clearInterval(itemInterval);
+            }
+        }
 
         // making changes to the slider
         function changeSliderItem(current, item) {
             current.classList.remove("slider--item-current");
             item.classList.add("slider--item-current");
-            
+            currentIdx = item;
         }
         
         // handler for btns and slider items
@@ -240,6 +265,7 @@
                         }
 
                         var item = idx + 1;
+
                         changeSliderItem(sliderItems[idx], sliderItems[item]);
                         break;
                     }
@@ -258,6 +284,7 @@
                         } 
 
                         var item = idx - 1;
+
                         changeSliderItem(sliderItems[idx], sliderItems[item]);
                         break;
                     }
@@ -269,6 +296,8 @@
         function sBtnHandler(ev) {
             ev.preventDefault();
             ev.stopPropagation();
+
+            intervalSliderItem(true);
 
             switch(this.name) {
                 case "previous--btn":
@@ -291,6 +320,8 @@
         for (var idx = 0; idx < sliderItems.length; idx++) {
             if (idx === sliderItems.length - 1) {
                 sliderItems[idx].classList.add("slider--item-current");
+                currentIdx = sliderItems[idx];
+                intervalSliderItem();
             }
         }
     }
