@@ -2,7 +2,7 @@
 
 <?php $__env->startSection("content"); ?>
     <div id="form--wrap">
-        <h3>Investiment</h3>
+        <h3>Investissement</h3>
 
         <form  data-action="/form" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="investir--form" class="form--el">
             <?php echo e(csrf_field()); ?>

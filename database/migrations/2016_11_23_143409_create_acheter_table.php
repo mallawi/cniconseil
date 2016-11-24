@@ -15,18 +15,18 @@ class CreateAcheterTable extends Migration
     {
         Schema::create('acheter', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('lname');
-            $table->string('fname');
-            $table->string('email');
-            $table->interger('phone');
-            $table->interger('telephone');
-            $table->string('address');
+            $table->string('lname')->nullable();
+            $table->string('fname')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('phone');
+            $table->integer('telephone');
+            $table->string('address')->nullable();
             $table->integer('postalcode');
-            $table->string('ville');
-            $table->string('type');
-            $table->string('budget');
-            $table->string('lieu');
-            $table->text('message');
+            $table->string('ville')->nullable();
+            $table->string('type')->nullable();
+            $table->string('budget')->nullable();
+            $table->string('lieu')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

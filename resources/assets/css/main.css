@@ -695,8 +695,7 @@ footer#main--footer {
     background-size: 0% 4px;
     background-position: bottom center;
 	text-align: left;
-	border: none;
-    border-bottom: 1px solid#3a3e41;
+    border: 1px solid#3a3e41;
 	border-radius: 2px;
     display: block;
     -webkit-transition: background-size 0.3s ease-in-out;
@@ -707,7 +706,6 @@ footer#main--footer {
 
 .form--group input:focus {
     background-size: 100% 4px;
-    border-bottom: none;
 	outline: none;
 }
 
@@ -891,7 +889,7 @@ footer#main--footer {
     .form--group-row label {
         width: auto;
         max-width: auto;
-        margin: auto 10px 0 auto;
+        margin: auto 10px auto auto;
         display: inline-block;
     }
 

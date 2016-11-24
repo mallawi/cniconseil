@@ -83,7 +83,7 @@
                     formHolder.appendChild(requestedForm);
                     this.formRef.old = this.formRef.current;
             
-                    this.handle.listen();
+                    // this.handle.listen();
 
                     console.log("added");
                 }
@@ -171,6 +171,7 @@
         console.log(formEl.checkValidity());
 
         var formData = new FormData(formEl);
+        // console.log(typeof formData);
         var formAction = formEl.getAttribute("data-action");
 
 
