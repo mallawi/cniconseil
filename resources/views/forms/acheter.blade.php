@@ -34,13 +34,13 @@
 
 
             <div class="form--group form--group-row">
-                <label for="adresse">Adresse</label>
-                <input name="adresse" type="text" id="adresse" autocomplete="address-line1">
+                <label for="address">Adresse</label>
+                <input name="adresse" type="text" id="address" autocomplete="address-line1">
             </div>
 
             <div class="form--group form--group-row">
-                <label for="code--postal">Code Postal</label>
-                <input name="codepostal" type="text" id="code--postal" autocomplete="postal-code">
+                <label for="postal--code">Code Postal</label>
+                <input name="codepostal" type="text" id="postal--code" autocomplete="postal-code">
             </div>
 
              <div class="form--group form--group-row">
