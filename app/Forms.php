@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Acheter extends Model
+class Forms extends Model
 {
-    /**
+     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'acheter';
+    protected $table = 'forms';
 
 
     /**
@@ -20,7 +20,7 @@ class Acheter extends Model
      * @var array
      */
     protected $fillable = [
-        'forms_id','address', 'postalcode', 'ville', 'type', 'budget', 'lieu'
+        'lname', 'fname', 'email', 'phone', 'telephone', 'message'
     ];
 
 
@@ -31,12 +31,11 @@ class Acheter extends Model
     */
     protected $guarded = [];
 
-
     /**
-    * Get the forms that owns acheter.
+    * Get the acheter for the forms.
     */
-    public function forms()
+    public function acheter()
     {
-        return $this->belongsTo('App\Forms');
+        return $this->hasMany('App\Acheter');
     }
 }

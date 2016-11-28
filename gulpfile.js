@@ -58,7 +58,7 @@ elixir((mix) => {
 
 // Moving files from build to repo
 gulp.task("move", function() {
-    gulp.src(["!node_modules", "!.vagrant", " !vendor", "./**"])
+    gulp.src(["./**", "!node_modules/**", "!.vagrant/**", "!vendor/**"])
     .pipe(gulp.dest(path.join(__dirname, "../GitHub/cniconseil")));
 });
 

@@ -9,7 +9,7 @@
 
             <div class="form--group form--group-row form--group-double">
                 <label for="last--name" class="">Nom</label>
-                <input name="lname" type="text" id="last--name" class="" autocomplete="family-name">
+                <input name="lname" type="text" id="last--name" class="" autocomplete="family-name" required>
             </div>
 
             <div class="form--group form--group-row form--group-double">
@@ -34,13 +34,13 @@
 
 
             <div class="form--group form--group-row">
-                <label for="adresse">Adresse</label>
-                <input name="adresse" type="text" id="adresse" autocomplete="address-line1">
+                <label for="address">Adresse</label>
+                <input name="address" type="text" id="address" autocomplete="address-line1">
             </div>
 
             <div class="form--group form--group-row">
-                <label for="code--postal">Code Postal</label>
-                <input name="codepostal" type="text" id="code--postal" autocomplete="postal-code">
+                <label for="postal--code">Code Postal</label>
+                <input name="postalcode" type="text" id="postal--code" autocomplete="postal-code">
             </div>
 
              <div class="form--group form--group-row">
@@ -50,7 +50,7 @@
 
             <div class="form--group form--select form--group-row form--group-double">
                 <label for="type--achat">Type de bien</label>
-                <select name="achat" id="type--achat" required>
+                <select name="type" id="type--achat" required>
                     <option value="maison">Maison</option> 
                     <option value="appartement">Appartement</option>
                     <option value="terrain">Terrain</option>
@@ -64,7 +64,7 @@
 
             <div class="form--group form--group-row">
                 <label for="adresse--bien">Adresse de bien</label>
-                <input name="addresseBien" type="text" id="adresse--bien">
+                <input name="adressebien" type="text" id="adresse--bien">
             </div>
 
             <div class="form--group form--message">

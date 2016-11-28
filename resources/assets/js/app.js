@@ -83,7 +83,7 @@
                     formHolder.appendChild(requestedForm);
                     this.formRef.old = this.formRef.current;
             
-                    // this.handle.listen();
+                    this.handle.listen();
 
                     console.log("added");
                 }
@@ -168,12 +168,16 @@
 
 
     function formsPostHandler(formEl) {
-        console.log(formEl.checkValidity());
-
         var formData = new FormData(formEl);
-        // console.log(typeof formData);
-        var formAction = formEl.getAttribute("data-action");
 
+        for (var eItem = 0; eItem < formEl.elements.length; eItem++) {
+            if (formEl.elements[eItem].tagName.toUpperCase() === "BUTTON") { continue; }
+            if (!formEl.elements[eItem].required && !formEl.elements[eItem].value) {
+                formData.set(formEl.elements[eItem].name, 11111);
+            }
+        }
+
+        var formAction = formEl.getAttribute("data-action");
 
         var progressCb = {
             progress: function(ev) {

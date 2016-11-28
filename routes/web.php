@@ -22,8 +22,3 @@ Route::get("services", "PagesController@services");
 Route::get("form/{type?}", "RequestsController@form");
 
 Route::post("form", "RequestsController@store");
-
-
-
-
-
