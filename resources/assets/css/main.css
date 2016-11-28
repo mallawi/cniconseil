@@ -1,10 +1,18 @@
 @charset "UTF-8";
 
 /* 
-   PRIMARY COLOR slate: #4d5256
-   SECONDARY COLOR orange: #eb8c00
-   HEADER BG darker slate: #1f2122
-   #f4f6f9
+    PRIMARY COLOR Grey 500: #9E9E9E
+    Grey 50: #FAFAFA 
+    Grey 300: #E0E0E0
+    Grey 700: #616161
+    Grey 900: #212121
+
+    SECONDARY COLOR Orange 500: #FF9800
+    Orange 100: #FFE0B2
+    Orange 300: #FFB74D
+    Orange 700: #F57C00
+
+    BG COLOR Main: #FAFAFAs
 */
 
 
@@ -64,7 +72,7 @@ p {
 main#main--container {
     width: 100%;
     height: 100%;
-    background-color: #f7f8f8;
+    background-color: #FAFAFA ;
     color: #0a0a0a;
 }
 
@@ -78,7 +86,7 @@ header#main--header {
     height: auto;
     margin: 0;
     padding: 5px 0;
-    background-color: #3a3e41;
+    background-color: #616161;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -211,7 +219,7 @@ header#main--header {
 
 
 .nav--list li span:hover {
-    background-color: #eb8c00;
+    background-color: #FF9800;
 }
 
 #main--header .nav--list a {
@@ -280,11 +288,11 @@ header#main--header {
     }
     
     #main--header .nav--list li:nth-child(1) {
-        border-bottom: 2px solid #eb8c00;
+        border-bottom: 2px solid #FF9800;
     }
 
     #main--header .nav--list li:hover {
-        background-color: #eb8c00;
+        background-color: #FF9800;
     }
 
     .nav--list li.sub--menu:hover span {
@@ -320,7 +328,7 @@ footer#main--footer {
     height: auto;
     margin: 0;
     padding: 20px 30px;
-    background-color: #3a3e41;
+    background-color: #616161;
 }
 
 .footer--contact address {
@@ -416,14 +424,14 @@ footer#main--footer {
     width: 100%;
     height: auto;
     padding: 50px 0;
-    background-color: #f7f8f8;
+    background-color: #FAFAFA ;
     background-clip: padding-box;
 }
 
 .forms--section #forms--item--wrap {
     width: 100%;
     height: auto;
-    background-color: #72797f;
+    background-color: #E0E0E0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -445,7 +453,7 @@ footer#main--footer {
     height: 0;
     margin: 0;
     padding: 0;
-    background-color: #72797f;
+    background-color: #E0E0E0;
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
     transition: -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
@@ -504,12 +512,14 @@ footer#main--footer {
     margin: 20px auto;
     padding: 5px;
     color: #f7f8f8;
-    background-color: #686f75;
+    background-color:#9E9E9E;
     border-radius: 4px;
     cursor: pointer;
     position: relative;
-    -webkit-transition: background-color 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out,
+        color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out,
+        color 0.2s ease-in-out;
 }
 
 
@@ -537,10 +547,11 @@ footer#main--footer {
 
 #forms--item--wrap .forms--item-current {
     background-color: transparent;
+    color: #0a0a0a;
 }
 
 #forms--item--wrap .forms--item-current::before {
-     border: 2px solid #8e9191;
+     border: 2px solid #9E9E9E;
     -webkit-transform: scale3d(1, 1.2, 1);
             transform: scale3d(1, 1.2, 1);
 }
@@ -551,10 +562,11 @@ footer#main--footer {
 
 #forms--item--wrap .forms--item:hover {
     background-color: transparent;
+    color: #0a0a0a;
 }
 
 #forms--item--wrap .forms--item:hover::before {
-    border: 2px solid #8e9191;
+    border: 2px solid #9E9E9E;
     -webkit-transform: scale3d(1, 1.2, 1);
             transform: scale3d(1, 1.2, 1);
 }
@@ -576,7 +588,6 @@ footer#main--footer {
     width: 100%;
     height: 5px;
     display: none;
-    /*display: inline-block;*/
     position: absolute;
     bottom: 0;
     left: 0;
@@ -851,11 +862,6 @@ footer#main--footer {
     #form--wrap button {
         margin: 0 20px;
     }
-
-    /*#form--wrap button:hover {
-        border: none;
-        background-color: #4d5256;
-    }*/
 }
 
 
@@ -893,7 +899,7 @@ footer#main--footer {
     width: 100%;
     height: 580px;
     padding: 0 5px;
-    background-color: #f7f8f8;        
+    background-color: #FAFAFA;        
     
 }
 
@@ -1094,14 +1100,14 @@ footer#main--footer {
 #content--container-annonces #annonces--grid-section {
     width: 100%;
     padding: 100px 5px;
-    background-color: #f7f8f8;
+    background-color: #FAFAFA;
 }
 
 
 #annonces--grid-section .annonces--grid-cell {
     height: 500px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 10px rgba(0, 0, 0, 0.1);
-    background-color: deepskyblue;
+    background-color: #9E9E9E;
     position: relative;
 
 }
