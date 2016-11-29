@@ -6,11 +6,16 @@
     <div id="content--container-annonces">
         <section id="annonces--grid-section">
             <div class="mdl-grid">
-                <?php for($i = 0; $i < 4; $i++): ?>
+                <?php 
+                    $ix = 30;
+                 ?>
+                <?php for($i = 15; $i < 19; $i++): ?>
                 <div class="annonces--grid-cell mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
+                    <?php for(; $ix < 35; $ix++): ?>
                     <figure class="annonces--fig">
-                        <img src="http://placehold.it/900x300/fff/000">
+                        <img src="https://unsplash.it/700/300?image=<?php echo e($ix); ?>">
                     </figure>
+                    <?php endfor; ?>
                     <div class="annonces--desc">
                         <h5>Description&colon;</h5>
                     </div>
@@ -18,6 +23,9 @@
                         <a href="<?php echo e(url('/annonces/annonce')); ?>">Voir annonce</a>
                     </button>
                 </div>
+                <?php 
+                    $ix = 30;
+                 ?>
                 <?php endfor; ?>
             </div>
         </section>

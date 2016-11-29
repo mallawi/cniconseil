@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms;
 use App\Acheter;
 
 use Illuminate\Http\Request;
@@ -20,20 +21,12 @@ class RequestsController extends Controller
     {
         $formData = $request->all();
 
-        // $lname = $formData["lname"]; 
+        // $forms = Forms::create($formData);
+        // $acheter = Acheter::create($formData);
 
-        // $fArr = array();
-
-        // foreach ($formData as $key => $value) {
-        //     $fArr[$key] = $value;
-        // }
-
-        // $acheter = new Acheter;
-        // $acheter->lname = $lname;
-
-        $acheter = Acheter::create($formData);
+        // $acheter->forms()->associate($forms);
         // $acheter->save();
 
-        return $acheter;
+        return $request;
     }
 }

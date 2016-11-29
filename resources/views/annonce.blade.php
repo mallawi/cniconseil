@@ -7,12 +7,20 @@
         <section id="annonce--section">
             <div class="annonce--gallery-wrap">
                 <div class="annonce--grid-item mdl-grid">
-                    <div class="annonce--item-cell mdl-cell mdl-cell--12-col"></div>
+                    <div class="annonce--item-cell mdl-cell mdl-cell--12-col">
+                        <figure>
+                            <img src="https://unsplash.it/650/250/?random">
+                        </figure>
+                    </div>
                 </div>
 
                 <div class="annonce--grid-items mdl-grid">
-                    @for ($i = 0; $i < 4; $i++)
-                    <div class="annonce--items-cell mdl-cell mdl-cell--3-col">4</div>
+                    @for ($i = 21; $i < 25; $i++)
+                    <div class="annonce--items-cell mdl-cell mdl-cell--3-col">
+                        <figure>
+                            <img src="https://unsplash.it/160/80?image={{$i}}">
+                        </figure>
+                    </div>
                     @endfor
                 </div>
             </div>

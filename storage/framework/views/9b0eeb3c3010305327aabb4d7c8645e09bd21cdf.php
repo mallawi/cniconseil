@@ -4,7 +4,7 @@
     <div id="form--wrap">
         <h3>Aquisition</h3>
 
-        <form action="/form" method="POST" accept-charset="UTF-8" autocomplete="on" id="acheter--form" class="form--el">
+        <form data-action="/form" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="acheter--form" class="form--el">
             <?php echo e(csrf_field()); ?>
 
 
@@ -70,11 +70,11 @@
 
             <div class="form--group form--message">
                 <label for="message">Message</label>
-                <textarea name="message" cols="50" rows="10" id="message"></textarea>
+                <textarea name="message" placeholder="send us a message" cols="50" rows="10" id="message"></textarea>
             </div>
 
             <div class="form--btns">
-                <button id="form--cancel-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="button">Anuller</button>
+                <button id="form--cancel-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="reset">Anuller</button>
                 <button id="form--submit-btn" class="form--btn mdl-button mdl-js-button mdl-button--raised" type="submit">Soumettre</button>
             </div>
         </form>

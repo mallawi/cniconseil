@@ -95,13 +95,17 @@
             handle: { // listening for form submition and handling it
                 listen: function() {
                     var formEl =  document.forms[0];
-                    console.log(formEl);
-
+                    
                     formEl.addEventListener("submit", function(ev) {
                         ev.preventDefault();
 
                         formsPostHandler(formEl); // sending the form to be posted to server
                         return false;
+                    });
+
+                    formEl.addEventListener("reset", function(ev) {
+                        formsHandler.handle.remove();
+                        return;
                     });
                 },
                 remove: function() {
