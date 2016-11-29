@@ -1063,8 +1063,7 @@ footer#main--footer {
     left: 0;
 }
 
-
-#form--wrap form {
+.form--el {
     height: 100%;
     margin: 0;
     padding: 20px 10px;
@@ -1081,7 +1080,7 @@ footer#main--footer {
 }
 
 
-#form--wrap .form--group {
+.form--el .form--group {
     width: 100%;
     min-width: 100%;
     height: auto;
@@ -1090,7 +1089,7 @@ footer#main--footer {
 }
 
 
-#form--wrap .form--group-row {
+.form--el .form--group-row {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1103,8 +1102,8 @@ footer#main--footer {
         align-content: center;
 }
 
-#form--wrap .form--budget,
-#form--wrap .form--select  {
+.form--el .form--budget,
+.form--el .form--select  {
     -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
 }
@@ -1119,7 +1118,7 @@ footer#main--footer {
     margin: 0 auto;
 	height: 40px;
     padding: 0 0.5em;
-    color: #f7f8f8;
+    color: black;
     background-color: transparent;
     background-image: -webkit-linear-gradient(left, #3a3e41, #3a3e41);
     background-image: linear-gradient(90deg, #3a3e41, #3a3e41);
@@ -1254,7 +1253,7 @@ footer#main--footer {
     height: 200px;
     margin: 5px auto 0;
     padding: 1em;
-    color: #f7f8f8;
+    color: black;
     background-color: transparent;
     border: 2px solid#3a3e41;
 	border-radius: 2px;
@@ -1266,7 +1265,7 @@ footer#main--footer {
     outline: none;
 }
 
-#form--wrap .form--btns {
+.form--el .form--btns {
     width: auto;
     height: auto;
     margin: 20px auto;
@@ -1274,7 +1273,7 @@ footer#main--footer {
 }
 
 
-#form--wrap button {
+.form--el button {
     margin: 0 5px;
 }
 
@@ -1290,8 +1289,8 @@ footer#main--footer {
     }
 
 
-    #form--wrap form {
-        width: 80%;
+    .form--el {
+        width: 90%;
         height: 80%;
         margin: auto;
         padding: 20px 50px;
@@ -1300,20 +1299,14 @@ footer#main--footer {
     }
 
 
-    #form--wrap .form--group-row {
+    .form--el .form--group-row {
         -ms-flex-flow: row nowrap;
             flex-flow: row nowrap;
     }
 
-    #form--wrap .form--group-double {
-        width: auto;
-        min-width: 320px;
-        margin: 10px 0;
-    }
-
     .form--group-row input {
-        width: 50%;
-        max-width: 200px;
+        width: 60%;
+        margin-right: calc(50% - 150px);
         margin-left: 0;
     }
 
@@ -1329,7 +1322,7 @@ footer#main--footer {
         width: 70%;
     }
 
-    #form--wrap button {
+    .form--el button {
         margin: 0 20px;
     }
 }
@@ -1355,6 +1348,21 @@ footer#main--footer {
 @media (min-width: 1200px) {
     #content--container-accueil .forms--section {
         padding: 100px 150px;
+    }
+
+    .form--el {
+        width: 80%;
+    }
+
+    .form--el .form--group-double {
+        width: auto;
+        min-width: 35%;
+        margin: 10px 0;
+    }
+
+    .form--group-row input {
+        width: 50%;
+        max-width: 200px;
     }
 }
 
@@ -1523,7 +1531,7 @@ footer#main--footer {
     width: 100%;
     height: 400px;
     padding: 0;
-    background-color: dodgerblue;
+    background-color: #E0E0E0;
 }
 
 
@@ -1668,24 +1676,39 @@ footer#main--footer {
 
 #content--container-annonce #annonce--section {
     width: 100%;
-    padding: 100px 200px;
+    padding: 100px 5px;
+    background-color: #FAFAFA;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+}
+
+#content--container-annonce #annonce--contact-section {
+    width: 100%;
+    padding: 100px 0;
+    background-color: #E0E0E0;
 }
 
 #annonce--section .annonce--gallery-wrap {
-    width: 50%;
+    width: 100%;
     height: 400px;
     margin: 0;
     padding: 0;
-    float: left;
     position: relative;
 }
 
 #annonce--section .annonce--desc-wrap {
-    width: 50%;
+    width: 100%;
     height: 400px;
     margin: 0;
     padding: 0;
-    float: left;
 }
 
 #annonce--section .annonce--grid-item {
@@ -1708,6 +1731,77 @@ footer#main--footer {
 
 .annonce--desc-wrap h4 {
     text-align: center;
+}
+
+#annonce--contact-section h4 {
+    text-align: center;
+}
+
+
+@media (min-width: 770px) {
+    #content--container-annonce #annonce--section {
+        padding: 100px 50px;
+    }
+    
+    #content--container-annonce #annonce--contact-section {
+        padding: 50px 50px;
+    }
+     
+} 
+ 
+@media (min-width: 990px) {
+    #content--container-annonce #annonce--section {
+        padding: 100px 100px;
+    }
+
+    #annonce--section .annonce--gallery-wrap {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #annonce--section .annonce--desc-wrap {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #content--container-annonce #annonce--contact-section {
+        padding: 100px 100px;
+    }
+     
+} 
+ 
+@media (min-width: 1025px) {
+    #content--container-annonce #annonce--section {
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -ms-flex-line-pack: start;
+            align-content: flex-start;
+    }
+
+    
+    #annonce--section .annonce--gallery-wrap {
+        width: 60%;
+        margin: 0;
+    }
+
+    #annonce--section .annonce--desc-wrap {
+        width: 40%;
+        margin: 0;
+    }
+
+    #content--container-annonce #annonce--contact-section {
+        padding: 100px 150px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    #content--container-annonce #annonce--section {
+        padding: 100px 200px;
+    }
 }
 
 
