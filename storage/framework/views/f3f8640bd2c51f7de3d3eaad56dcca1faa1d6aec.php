@@ -6,7 +6,7 @@
             <ul class="nav--list mdl-mega-footer__link-list">
                 <li><a href="<?php echo e(url('/annonces')); ?>">Annonces</a></li>
                 <li><a href="<?php echo e(url('/services')); ?>">Services</a></li>
-                <li><a href="/#apropos">A propos</a></li>
+                <li><a href="/#a-propos">À propos</a></li>
                 <li><a href="/#contact">Contact</a></li>
             </ul>
         </nav>
@@ -26,6 +26,6 @@
     </div>
 
     <div class="mdl-mega-footer__bottom-section mdl-mega-footer__middle-section">
-        <p>Copyright<p>
+        <p>&copy; Copyright cniconseil<p>
     </div>
 </footer>

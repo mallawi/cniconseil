@@ -16,6 +16,42 @@
 */
 
 
+@-webkit-keyframes slider-anim-in {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slider-anim-in {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@-webkit-keyframes slider-anim-out {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes slider-anim-out {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
 
 /*
 ** CLEAR FIX FOR FLOATING ELEMENTS
@@ -945,10 +981,13 @@ footer#main--footer {
     position: absolute;
     top: 5%;
     left: 100%;
+    -webkit-animation: slider-anim-out 0.3s ease-in-out forwards;
+            animation: slider-anim-out 0.3s ease-in-out forwards;
 }
 
 .slider--items .slider--item-current {
-    left: 0;
+    -webkit-animation: slider-anim-in 0.3s ease-in-out forwards;
+            animation: slider-anim-in 0.3s ease-in-out forwards;
 }
 
 .slider--item img {
@@ -1130,11 +1169,15 @@ footer#main--footer {
     padding: 0;
     position: absolute;
     top: 0;
-    right: -100%;
+    left: 100%;
+    -webkit-animation: slider-anim-out 0.3s ease-in-out forwards;
+    animation: slider-anim-out 0.3s ease-in-out forwards;
+
 }
 
 .annonces--grid-cell figure.annonces--fig-current {
-    right: 0;
+    -webkit-animation: slider-anim-in 0.3s ease-in-out forwards;
+    animation: slider-anim-in 0.3s ease-in-out forwards;
 }
 
 .annonces--grid-cell img {

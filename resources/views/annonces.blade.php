@@ -9,9 +9,9 @@
                 @php
                     $ix = 30;
                 @endphp
-                @for ($i = 15; $i < 17; $i++)
+                @for ($i = 15; $i < 19; $i++)
                 <div class="annonces--grid-cell mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
-                    @for (; $ix < 32; $ix++)
+                    @for (; $ix < 35; $ix++)
                     <figure class="annonces--fig">
                         <img src="https://unsplash.it/700/300?image={{$ix}}">
                     </figure>

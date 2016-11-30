@@ -8,7 +8,7 @@
             <li><a href="/">Accueil</a></li>
             <li><a href="<?php echo e(url('/annonces')); ?>">Annonces</a></li>
             <li><a href="<?php echo e(url('/services')); ?>">Services</a></li>
-            <li class="sub--menu"><a href="/#apropos">A propos</a>
+            <li class="sub--menu"><a href="/#a-propos">À propos</a>
                 <span><a href="/#partinaires">Partinaires</a></span>
             </li>
             <li><a href="/#contact">Contact</a></li>

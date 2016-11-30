@@ -7,8 +7,8 @@
         <section id="presentation" class="presentation--section">
             <hgroup class="pres--heading">
                 <h2>CNI Conseil</h2>
-                <h1>Espace Immobillier &amp; Patrimoine</h1>
-            <p>Consellier en Immobillier, Gention de Patrimoine Habitation, Bureaux et Commerces</p>
+                <h1>Espace Immobilier &amp; Patrimoine</h1>
+            <p>Conseiller en Immobilier, Gestion de Patrimoine Habitation, Bureaux et Commerces</p>
         </section>
 
         <section id="forms--wrapper" class="forms--section">
@@ -51,6 +51,7 @@
             </div>
 
             <div id="form--container"></div>
+            
             <div id="form--confirmation-message">
                 <h3>Merci de remplir le formulaire</h3>
             </div>
@@ -88,7 +89,7 @@
             </div>
         </section>
 
-        <section class="apropos--section">
+        <section id="a-propos" class="apropos--section">
                 <h2>Qui sommes-nous</h2>
         </section>
     </div>

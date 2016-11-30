@@ -220,32 +220,13 @@
     // var sliderHandler;
     // function handler for handling sliders
     function Slider(cls) {
-        this.cls = cls;
+        var cls = cls;
+        var itemInterval = null;
         this.currentIdx = null;
-        this.itemInterval = null;
+        var self = this;
 
-        this.intervalSliderItem = function(items, rmv) {
-           var sliderItems = items;
-
-            if (!rmv) {
-                this.itemInterval = setInterval(function() {
-                    if (this.currentIdx) {
-                        for (var idx = 0; idx < sliderItems.length; idx++) {
-                            if (this.currentIdx === sliderItems[idx]) {
-                                var item = idx - 1;
-                                if (idx - 1 < 0) {
-                                    var item = sliderItems.length - 1;
-                                }
-
-                                this.changeSliderItem(this.currentIdx, sliderItems[item], this.cls);
-                                break;
-                            }
-                        }
-                    }
-                }, 2000);
-            } else {
-                clearInterval(this.itemInterval);
-            }
+        this.stopInterval = function() {
+            clearInterval(this.itemInterval);
         }
 
         // making changes to the slider
@@ -253,6 +234,24 @@
             current.classList.remove(cls);
             item.classList.add(cls);
             this.currentIdx = item;
+        }
+
+        this.intervalSliderItem = function(items, currentItem) {
+            self.currentIdx = currentItem;
+            this.itemInterval = setInterval(function() {
+                if (self.currentIdx) {
+                    for (var idx = 0; idx < items.length; idx++) {
+                        if (self.currentIdx === items[idx]) {
+                            var item = idx - 1;
+                            if (idx - 1 < 0) {
+                                var item = items.length - 1;
+                            }
+                            self.changeSliderItem(self.currentIdx, items[item], cls);
+                            break;
+                        }
+                    }
+                }
+            }, 3000);
         }
     }
 
@@ -262,42 +261,13 @@
         var sliderItems = document.getElementsByClassName("slider--item");
 
         var sliderHandler = new Slider("slider--item-current");
-        console.log(sliderHandler);
 
         if (!sliderBtns.length || !sliderItems.length) { return; }
         var prevBtn;
         var nextBtn;
-
-        // function intervalSliderItem(rmv) {
-        //     if (!rmv) {
-        //         itemInterval = setInterval(function() {
-        //             if (currentIdx) {
-        //                 for (var idx = 0; idx < sliderItems.length; idx++) {
-        //                     if (currentIdx === sliderItems[idx]) {
-        //                         var item = idx - 1;
-        //                         if (idx - 1 < 0) {
-        //                             var item = sliderItems.length - 1;
-        //                         }
-
-        //                         changeSliderItem(currentIdx, sliderItems[item]);
-        //                         break;
-        //                     }
-        //                 }
-        //             }
-        //         }, 2000);
-        //     } else {
-        //         clearInterval(itemInterval);
-        //     }
-        // }
-
-        // // making changes to the slider
-        // function changeSliderItem(current, item) {
-        //     current.classList.remove("slider--item-current");
-        //     item.classList.add("slider--item-current");
-        // }
         
         // handler for btns and slider items
-        var sControl = {
+        var btnsAction = {
             previous: function(btn) {
                 if (nextBtn && nextBtn.disabled === true) {
                     nextBtn.disabled = false;
@@ -339,19 +309,19 @@
         }
 
         // event listener handler, determining the btn and calling the right action
-        function sBtnHandler(ev) {
+        function btnsHandler(ev) {
             ev.preventDefault();
             ev.stopPropagation();
 
-            sliderHandler.intervalSliderItem(true);
+            sliderHandler.stopInterval();
 
             switch(this.name) {
                 case "previous--btn":
-                    sControl.previous(this);
+                    btnsAction.previous(this);
                     prevBtn = this;
                     break;
                 case "next--btn":
-                    sControl.next(this);
+                    btnsAction.next(this);
                     nextBtn = this;
                     break;
             }
@@ -360,14 +330,14 @@
 
         // loops to add event listeners to btns and iterating over slider items
         for (var i = 0; i < sliderBtns.length; i++) {
-            sliderBtns[i].addEventListener("click", sBtnHandler);
+            sliderBtns[i].addEventListener("click", btnsHandler);
         }
 
         for (var idx = 0; idx < sliderItems.length; idx++) {
             if (idx === sliderItems.length - 1) {
                 sliderItems[idx].classList.add("slider--item-current");
-                sliderHandler.currentIdx = sliderItems[idx];
-                sliderHandler.intervalSliderItem(sliderItems);
+                sliderHandler.intervalSliderItem(sliderItems, sliderItems[idx]);
+                break;
             }
         }
         
@@ -376,29 +346,44 @@
 
     function slideAnnoncesFig() {
         var annoncesCell = document.getElementsByClassName("annonces--grid-cell");
-        var annoncesRef = {};
+        var annoncesCellRef = {};
         if (!annoncesCell) return;
 
+        var sliderHandler;
 
         for (var i = 0; i < annoncesCell.length; i++) {
             var cellChildren = annoncesCell[i].children;
-            annoncesRef[i] = annoncesCell[i];
+            var cell = annoncesCell[i];
+            annoncesCellRef[cell] = [];
+
+            sliderHandler = new Slider("annonces--fig-current");
 
             for (var ix = 0; ix < cellChildren.length; ix++) {
 
                 if (cellChildren[ix].tagName === "FIGURE") {
-                    annoncesRef[i][ix] = cellChildren.item(ix);
+                    annoncesCellRef[cell][ix] = cellChildren.item(ix);
 
                     if (ix === 0) {
                         cellChildren.item(ix).classList.add("annonces--fig-current");
+                        sliderHandler.intervalSliderItem(annoncesCellRef[cell], cellChildren.item(ix));
                     }
                 }
-                
-                console.log(annoncesRef);
             }
+            console.log(sliderHandler);
         }
     }
 
+    function handleAnnonceGallery() {
+        var gallery = document.getElementsByClassName("annonce--gallery-wrap")[0];
+        // var item = document.getElementsByClassName("annonce--grid-item")[0];
+        // var items = document.getElementsByClassName("annonce--grid-items");
+
+        console.log(gallery);
+
+        // if (!gallery) return;
+
+        console.log(gallery);
+    } 
 
 
     function init() {
@@ -426,9 +411,10 @@
             init();
             navHandler();
             formsHandler = new FormsHandler();
-            formsHandler.init();           
+            formsHandler.init();          
             slideAnnonceMain();
             slideAnnoncesFig();
+            handleAnnonceGallery();
         }
     }
 

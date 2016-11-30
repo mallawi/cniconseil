@@ -70,7 +70,7 @@
 
             <div class="form--group form--message">
                 <label for="message">Message</label>
-                <textarea name="message" placeholder="send us a message" cols="50" rows="10" id="message"></textarea>
+                <textarea name="message" cols="50" rows="10" id="message"></textarea>
             </div>
 
             <div class="form--btns">
