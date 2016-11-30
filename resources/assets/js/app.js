@@ -217,47 +217,84 @@
 
 
 
+    // var sliderHandler;
+    // function handler for handling sliders
+    function Slider(cls) {
+        this.cls = cls;
+        this.currentIdx = null;
+        this.itemInterval = null;
 
-    // function handler for handling slider from the index page
-    function sliderHandler() {
-        var sliderBtns = document.getElementsByClassName("slider--btn");
-        var sliderItems = document.getElementsByClassName("slider--item");
+        this.intervalSliderItem = function(items, rmv) {
+           var sliderItems = items;
 
-        if (!sliderBtns.length || !sliderItems.length) { return; }
-        var prevBtn;
-        var nextBtn;
-        var currentIdx;
-        var itemInterval;
-
-
-        function intervalSliderItem(rmv) {
             if (!rmv) {
-                itemInterval = setInterval(function() {
-                    if (currentIdx) {
+                this.itemInterval = setInterval(function() {
+                    if (this.currentIdx) {
                         for (var idx = 0; idx < sliderItems.length; idx++) {
-                            if (currentIdx === sliderItems[idx]) {
+                            if (this.currentIdx === sliderItems[idx]) {
                                 var item = idx - 1;
                                 if (idx - 1 < 0) {
                                     var item = sliderItems.length - 1;
                                 }
 
-                                changeSliderItem(currentIdx, sliderItems[item]);
+                                this.changeSliderItem(this.currentIdx, sliderItems[item], this.cls);
                                 break;
                             }
                         }
                     }
                 }, 2000);
             } else {
-                clearInterval(itemInterval);
+                clearInterval(this.itemInterval);
             }
         }
 
         // making changes to the slider
-        function changeSliderItem(current, item) {
-            current.classList.remove("slider--item-current");
-            item.classList.add("slider--item-current");
-            currentIdx = item;
+        this.changeSliderItem = function(current, item, cls) {
+            current.classList.remove(cls);
+            item.classList.add(cls);
+            this.currentIdx = item;
         }
+    }
+
+
+    function slideAnnonceMain() {
+        var sliderBtns = document.getElementsByClassName("slider--btn");
+        var sliderItems = document.getElementsByClassName("slider--item");
+
+        var sliderHandler = new Slider("slider--item-current");
+        console.log(sliderHandler);
+
+        if (!sliderBtns.length || !sliderItems.length) { return; }
+        var prevBtn;
+        var nextBtn;
+
+        // function intervalSliderItem(rmv) {
+        //     if (!rmv) {
+        //         itemInterval = setInterval(function() {
+        //             if (currentIdx) {
+        //                 for (var idx = 0; idx < sliderItems.length; idx++) {
+        //                     if (currentIdx === sliderItems[idx]) {
+        //                         var item = idx - 1;
+        //                         if (idx - 1 < 0) {
+        //                             var item = sliderItems.length - 1;
+        //                         }
+
+        //                         changeSliderItem(currentIdx, sliderItems[item]);
+        //                         break;
+        //                     }
+        //                 }
+        //             }
+        //         }, 2000);
+        //     } else {
+        //         clearInterval(itemInterval);
+        //     }
+        // }
+
+        // // making changes to the slider
+        // function changeSliderItem(current, item) {
+        //     current.classList.remove("slider--item-current");
+        //     item.classList.add("slider--item-current");
+        // }
         
         // handler for btns and slider items
         var sControl = {
@@ -275,7 +312,7 @@
 
                         var item = idx + 1;
 
-                        changeSliderItem(sliderItems[idx], sliderItems[item]);
+                        sliderHandler.changeSliderItem(sliderItems[idx], sliderItems[item], "slider--item-current");
                         break;
                     }
                 }
@@ -294,7 +331,7 @@
 
                         var item = idx - 1;
 
-                        changeSliderItem(sliderItems[idx], sliderItems[item]);
+                        sliderHandler.changeSliderItem(sliderItems[idx], sliderItems[item], "slider--item-current");
                         break;
                     }
                 }
@@ -306,7 +343,7 @@
             ev.preventDefault();
             ev.stopPropagation();
 
-            intervalSliderItem(true);
+            sliderHandler.intervalSliderItem(true);
 
             switch(this.name) {
                 case "previous--btn":
@@ -329,8 +366,35 @@
         for (var idx = 0; idx < sliderItems.length; idx++) {
             if (idx === sliderItems.length - 1) {
                 sliderItems[idx].classList.add("slider--item-current");
-                currentIdx = sliderItems[idx];
-                intervalSliderItem();
+                sliderHandler.currentIdx = sliderItems[idx];
+                sliderHandler.intervalSliderItem(sliderItems);
+            }
+        }
+        
+    }
+
+
+    function slideAnnoncesFig() {
+        var annoncesCell = document.getElementsByClassName("annonces--grid-cell");
+        var annoncesRef = {};
+        if (!annoncesCell) return;
+
+
+        for (var i = 0; i < annoncesCell.length; i++) {
+            var cellChildren = annoncesCell[i].children;
+            annoncesRef[i] = annoncesCell[i];
+
+            for (var ix = 0; ix < cellChildren.length; ix++) {
+
+                if (cellChildren[ix].tagName === "FIGURE") {
+                    annoncesRef[i][ix] = cellChildren.item(ix);
+
+                    if (ix === 0) {
+                        cellChildren.item(ix).classList.add("annonces--fig-current");
+                    }
+                }
+                
+                console.log(annoncesRef);
             }
         }
     }
@@ -362,8 +426,9 @@
             init();
             navHandler();
             formsHandler = new FormsHandler();
-            formsHandler.init();
-            sliderHandler();
+            formsHandler.init();           
+            slideAnnonceMain();
+            slideAnnoncesFig();
         }
     }
 
