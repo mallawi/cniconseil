@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAcheterTable extends Migration
+class CreateVendreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,18 @@ class CreateAcheterTable extends Migration
      */
     public function up()
     {
-        Schema::create('acheter', function (Blueprint $table) {
+        Schema::create('vendre', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('lname')->nullable();
-            $table->string('fname')->nullable();
-            $table->string('email')->nullable();
-            $table->integer('phone');
-            $table->integer('telephone');
+            $table->integer('forms_id')->unsigned()->nullable();
             $table->string('address')->nullable();
-            $table->integer('postalcode');
+            $table->unsignedMediumInteger('postalcode')->nullable();
             $table->string('ville')->nullable();
             $table->string('type')->nullable();
-            $table->string('budget')->nullable();
-            $table->string('lieu')->nullable();
-            $table->text('message')->nullable();
+            $table->string('prix')->nullable();
+            $table->string('address_bien')->nullable();
             $table->timestamps();
+
+            $table->foreign('forms_id')->references('id')->on('forms');
         });
     }
 
@@ -38,6 +35,10 @@ class CreateAcheterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('acheter');
+        Schema::table('vendre', function ($table) {
+           $table->dropForeign(['forms_id']);
+        });
+
+        Schema::dropIfExists('vendre');
     }
 }

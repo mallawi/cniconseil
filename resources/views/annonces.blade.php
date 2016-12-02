@@ -16,10 +16,7 @@
                         <img src="https://unsplash.it/700/300?image={{$ix}}">
                     </figure>
                     @endfor
-                    <div class="annonces--desc">
-                        <h5>Description&colon;</h5>
-                    </div>
-                   <button type="button" class="annonces--link-btn mdl-button mdl-js-button mdl-button--raised">
+                    <button type="button" class="annonces--link-btn mdl-button mdl-js-button mdl-button--raised">
                         <a href="{{ url('/annonces/annonce') }}">Voir annonce</a>
                     </button>
                 </div>

@@ -60,12 +60,27 @@
 
         return {
             init: function() {
-                formsGetHandler();
+                var formsItems = document.getElementsByClassName("forms--item");
+
+                if (formsItems) {
+                    for (var i = 0; i < formsItems.length; i++) {
+                        formsItems[i].addEventListener("click", function(ev) {
+                            ev.preventDefault();
+                            ev.stopPropagation();
+                            console.log(this);
+                            formsGetHandler(this);
+                        });
+                    }
+                } else if (document.forms) {
+                    this.handle.listen();
+                } else {
+                    return;
+                }
             },
             makeChanges: function(data) {
-                var requestedData = data;
-                var formHolder = document.getElementById("form--container");
-                var requestedForm = requestedData.getElementById("form--wrap");
+                var requestedData = data,
+                    formHolder = document.getElementById("form--container"),
+                    requestedForm = requestedData.getElementById("form--wrap");
 
                 if (formHolder.classList.contains("form--shown")) { // replace the form if other shown
                     // this.handle.replace(formHolder, requestedForm);
@@ -95,6 +110,8 @@
             handle: { // listening for form submition and handling it
                 listen: function() {
                     var formEl =  document.forms[0];
+
+                    console.log(formEl);
                     
                     formEl.addEventListener("submit", function(ev) {
                         ev.preventDefault();
@@ -109,8 +126,9 @@
                     });
                 },
                 remove: function() {
-                    var oldForm = document.getElementById("form--wrap");
-                    var formHolder = document.getElementById("form--container");
+                    var oldForm = document.getElementById("form--wrap"),
+                        formHolder = document.getElementById("form--container");
+
                     formHolder.removeChild(oldForm);
                     formHolder.classList.remove("form--shown");
                     formsHandler.formRef.old.classList.remove("forms--item-current");
@@ -120,9 +138,8 @@
     }
 
 
-    function formsGetHandler() {
-        var formsItem = document.getElementsByClassName("forms--item");
-        var currentFormRef;
+    function formsGetHandler(formItem) {
+        var currentFormRef = formItem;
 
         var responseHandler = {
             success: function(data) {
@@ -131,9 +148,8 @@
             failed: function(status) {
                 console.log(status);
             }
-        }
-
-        var progressCb = {
+        },
+        progressCb = {
             progress: function(ev) {
                 currentFormRef.classList.add("form--item-progress");
             },
@@ -142,31 +158,26 @@
             }
         }
 
-        function getForms(ev) {
-            ev.preventDefault();
-            ev.stopPropagation();
+        function getForms() {
+            formsHandler.formRef.current = formItem;
 
-            currentFormRef = this;
-            formsHandler.formRef.current = this;
+            var typeAttr = formItem.getAttribute("data-type");
 
-            var typeAttr = this.getAttribute("data-type");
-
-            if (this.classList.contains("forms--item-current")) {
-                 if (formsHandler.formRef.old && this === formsHandler.formRef.old) {
+            if (formItem.classList.contains("forms--item-current")) {
+                 if (formsHandler.formRef.old && formItem === formsHandler.formRef.old) {
                     formsHandler.handle.remove();
                     return;
                 }
             }
 
-            var url = "/form/" + typeAttr;
-
-            var xhrequest = new XHRequest(progressCb);
+            var url = "/form/" + typeAttr,
+                xhrequest = new XHRequest(progressCb);
 
             xhrequest.get(url).then(responseHandler.success).catch(responseHandler.failed);
         }
 
-        for (var i = 0; i < formsItem.length; i++) {
-            formsItem[i].addEventListener("click", getForms);
+        if (formItem) {
+            getForms();
         }
     }
 
@@ -180,6 +191,14 @@
                 formData.set(formEl.elements[eItem].name, 11111);
             }
         }
+        
+        console.log(formEl.id);
+
+        // switch(formEl.id) {
+        //     case "":
+        //     break;
+        // }
+        return;
 
         var formAction = formEl.getAttribute("data-action");
 
@@ -190,9 +209,8 @@
             load: function(ev) {
                 // console.log(ev);
             }
-        }
-
-        var responseHandler = {
+        },
+        responseHandler = {
             success: function(data) {
                 formsHandler.handle.remove();
 
@@ -216,14 +234,13 @@
     }
 
 
-
-    // var sliderHandler;
     // function handler for handling sliders
     function Slider(cls) {
-        var cls = cls;
-        var itemInterval = null;
+        var cls = cls,
+            itemInterval = null,
+             self = this;
+
         this.currentIdx = null;
-        var self = this;
 
         this.stopInterval = function() {
             clearInterval(this.itemInterval);
@@ -257,15 +274,14 @@
 
 
     function slideAnnonceMain() {
-        var sliderBtns = document.getElementsByClassName("slider--btn");
-        var sliderItems = document.getElementsByClassName("slider--item");
-
-        var sliderHandler = new Slider("slider--item-current");
+        var prevBtn,
+            nextBtn,
+            sliderBtns = document.getElementsByClassName("slider--btn"),
+            sliderItems = document.getElementsByClassName("slider--item"),
+            sliderHandler = new Slider("slider--item-current");
 
         if (!sliderBtns.length || !sliderItems.length) { return; }
-        var prevBtn;
-        var nextBtn;
-        
+
         // handler for btns and slider items
         var btnsAction = {
             previous: function(btn) {
@@ -345,15 +361,15 @@
 
 
     function slideAnnoncesFig() {
-        var annoncesCell = document.getElementsByClassName("annonces--grid-cell");
-        var annoncesCellRef = {};
+        var sliderHandler,
+            annoncesCellRef = {},
+            annoncesCell = document.getElementsByClassName("annonces--grid-cell");
+
         if (!annoncesCell) return;
 
-        var sliderHandler;
-
         for (var i = 0; i < annoncesCell.length; i++) {
-            var cellChildren = annoncesCell[i].children;
-            var cell = annoncesCell[i];
+            var cellChildren = annoncesCell[i].children,
+                cell = annoncesCell[i];
             annoncesCellRef[cell] = [];
 
             sliderHandler = new Slider("annonces--fig-current");
@@ -373,16 +389,21 @@
         }
     }
 
-    function handleAnnonceGallery() {
-        var gallery = document.getElementsByClassName("annonce--gallery-wrap")[0];
-        // var item = document.getElementsByClassName("annonce--grid-item")[0];
-        // var items = document.getElementsByClassName("annonce--grid-items");
+    function annonceGalleryHandler() {
+        var gallery = document.getElementsByClassName("annonce--gallery-wrap")[0],
+            cellItem = document.getElementsByClassName("annonce--item-cell")[0],
+            cellItems = document.getElementsByClassName("annonce--items-cell");
 
-        console.log(gallery);
+        if (!gallery) return;
 
-        // if (!gallery) return;
-
-        console.log(gallery);
+        for (var i = 0; i < cellItems.length; i++) {
+            cellItems[i].addEventListener("click", function(ev) {
+                ev.preventDefault();
+                var fig = this.innerHTML;
+                this.innerHTML = cellItem.innerHTML;
+                cellItem.innerHTML = fig;
+            });
+        }
     } 
 
 
@@ -392,8 +413,8 @@
 
 
     function navHandler() {
-        var hamBtn = document.getElementById("ham--button");
-        var nav = document.getElementById("main--nav");
+        var hamBtn = document.getElementById("ham--button"),
+            nav = document.getElementById("main--nav");
 
         hamBtn.addEventListener("click", function(ev) {
             ev.preventDefault();
@@ -414,7 +435,7 @@
             formsHandler.init();          
             slideAnnonceMain();
             slideAnnoncesFig();
-            handleAnnonceGallery();
+            annonceGalleryHandler();
         }
     }
 

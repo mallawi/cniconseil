@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="mdl-mega-footer__bottom-section mdl-mega-footer__middle-section">
-        <p>&copy; Copyright cniconseil<p>
+    <div class="footer--copy mdl-mega-footer__bottom-section mdl-mega-footer__middle-section">
+        <p>&copy; Copyright<p>
     </div>
 </footer>

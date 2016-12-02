@@ -89,6 +89,10 @@
 
         <section id="a-propos" class="apropos--section">
                 <h2>Qui sommes-nous</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam leo ac neque ornare, vitae ultricies lectus pellentesque. Maecenas rhoncus at tellus eget volutpat. Praesent vitae diam velit. Nulla tempor purus et metus tincidunt ullamcorper nec vitae magna. Vivamus ornare aliquet blandit. Cras non sodales erat. Nulla condimentum ligula eget tincidunt semper. Donec nec malesuada lorem. Curabitur lobortis risus a dapibus aliquet. Quisque cursus ex in nunc rutrum, non posuere dui tincidunt.
+                    Fusce vestibulum risus eu turpis ultrices molestie. Aliquam molestie arcu ut vestibulum varius. Cras lobortis urna diam, eget laoreet nunc imperdiet at. Sed viverra mauris id mi tristique, a malesuada magna laoreet. Pellentesque maximus elementum est at consequat. Mauris ac iaculis eros, non rhoncus purus. Quisque eu nunc.
+                </p>
         </section>
     </div>
 <?php $__env->stopSection(); ?>

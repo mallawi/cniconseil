@@ -18,7 +18,7 @@
                     @for ($i = 21; $i < 25; $i++)
                     <div class="annonce--items-cell mdl-cell mdl-cell--3-col">
                         <figure>
-                            <img src="https://unsplash.it/160/80?image={{$i}}">
+                            <img src="https://unsplash.it/650/250?image={{$i}}">
                         </figure>
                     </div>
                     @endfor
@@ -32,7 +32,7 @@
 
         <section id="annonce--contact-section">
             <h4>Contact</h4>
-            <form data-action="" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="contact--form" class="form--el">
+            <form data-annonce="" data-action="/form" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="contact--form" class="form--el">
                 {{ csrf_field() }}
 
                 <div class="form--group form--group-row form--group-double">

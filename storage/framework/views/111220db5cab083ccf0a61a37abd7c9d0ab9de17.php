@@ -18,7 +18,7 @@
                     <?php for($i = 21; $i < 25; $i++): ?>
                     <div class="annonce--items-cell mdl-cell mdl-cell--3-col">
                         <figure>
-                            <img src="https://unsplash.it/160/80?image=<?php echo e($i); ?>">
+                            <img src="https://unsplash.it/650/250?image=<?php echo e($i); ?>">
                         </figure>
                     </div>
                     <?php endfor; ?>
@@ -32,7 +32,7 @@
 
         <section id="annonce--contact-section">
             <h4>Contact</h4>
-            <form data-action="" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="contact--form" class="form--el">
+            <form data-annonce="" data-action="/form" data-method="POST" accept-charset="UTF-8" autocomplete="on" id="contact--form" class="form--el">
                 <?php echo e(csrf_field()); ?>
 
 
